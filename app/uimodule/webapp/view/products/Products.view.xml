@@ -1,0 +1,57 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          displayBlock="true"
+          controllerName="uimodule.controller.Products">
+
+    <FlexBox id="productFlexBox"
+             direction="Row"
+             wrap="Wrap"
+             justifyContent="Center"
+             items="{mainServiceModel>/Products}"
+             width="80%"
+             height="100%"
+             class="productFlexBox">
+        <items>
+            <VBox class="productCard sapUiMediumMargin" alignItems="Center" width="250px" height="400px"  >
+                <!-- Ürün Görseli -->
+                <Image src="{mainServiceModel>image}" alt="{mainServiceModel>name}" class="productImage" width="100%" height="250px"/>
+                
+                <!-- Ürün Bilgileri -->
+                <VBox class="productDetails" alignItems="Center" justifyContent="Center">
+                    <Text text="{mainServiceModel>name}" class="productName" wrapping="true"/>
+                    <Text text="{mainServiceModel>price} €" class="productPrice"/>
+                    <Text text="{mainServiceModel>description}" class="productDescription" wrapping="true"/>
+                </VBox>
+                
+                <!-- Aksiyon Butonları -->
+                <HBox class="actionButtons" justifyContent="SpaceBetween" width="100%" visible="{= ${globalModel>/user/role} === 'admin'}">
+                    <Button icon="sap-icon://edit"
+                            tooltip="Edit"
+                            type="Accept"
+                            press="onEditProductPress" />
+                    <Button icon="sap-icon://delete"
+                            tooltip="Delete"
+                            type="Reject"
+                            press="onDeleteProductPress"/>
+                </HBox>
+                <HBox class="actionButtons" justifyContent="SpaceBetween" width="100%" visible="{= ${globalModel>/user/role} === 'client'}">
+                <HBox alignItems="Center">
+                    <Button icon="sap-icon://less"
+                            type="Accept"
+                            press="onDecrease" />
+                    <Text text="0" id="quantityText"/>
+                    <Button icon="sap-icon://add"
+                            type="Accept"
+                            press="onIncrease" />
+                </HBox>
+                    <Button icon="sap-icon://cart-4"
+                            tooltip="Delete"
+                            type="Reject"
+                            press="addToCart"/>
+                </HBox>
+            </VBox>
+        </items>
+    </FlexBox>
+ 
+</mvc:View>

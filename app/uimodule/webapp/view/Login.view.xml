@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="uimodule.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    
+    <VBox class="mainContainer" justifyContent="Center" alignItems="Center">
+        <!-- Arka Plan Resmi İçin Wrapper -->
+        <VBox class="backgroundContainer" justifyContent="Center" alignItems="Center">
+            <!-- Form Paneli -->
+            <Panel class="formPanel" width="400px">
+                <content>
+                    <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch" >
+                        <Title level="H2" text="LOGIN" class="formTitle"/>
+                        <Input placeholder="Email" class="inputMargin"  value="{loginModel>/email}" id="loginEmail" />
+                        <Input placeholder="Password" type="Password" class="inputMargin" value="{loginModel>/password}"/>
+                        <CheckBox text="I agree all statements in Terms of service" class="inputMargin"/>
+                        <Button text="Sign In" type="Emphasized" width="100%" class="signInButton" press="onLogin"/>
+                        <Text text="Don't have an account? " class="footerText"/>
+                        <Link text="Sign up here" press="onNavToRegister" class="footerLink"/>
+                    </VBox>
+                </content>
+            </Panel>
+        </VBox>
+    </VBox>
+</mvc:View>
+
+
+

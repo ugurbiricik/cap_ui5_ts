@@ -1,0 +1,22 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="uimodule.controller.Cart"
+    displayBlock="true">
+
+    <Page title="My Cart">
+        <content>
+            <List id="cartList" items="{mainServiceModel>/Cart}">
+                <StandardListItem
+                    title="{mainServiceModel>productID/name}"
+                    description="Quantity: {mainServiceModel>quantity}"
+                    info="Total: {mainServiceModel>totalPrice} €" />
+            </List>
+
+            <HBox justifyContent="End">
+             <Button text="Checkout" type="Emphasized" press="onCheckout" />
+            </HBox>
+        </content>
+    </Page>
+
+</mvc:View>

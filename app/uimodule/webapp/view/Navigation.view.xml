@@ -1,0 +1,31 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    controllerName="uimodule.controller.Navigation">
+    <Toolbar id="navigationToolbar" visible="{globalModel>/isUserLoggedIn}" class="navbar">
+        <content>
+   	    <core:Icon src="sap-icon://ai"/>
+        </content>
+        <content>
+            <ToolbarSpacer />
+        </content>
+        <content>
+            <Button text="Home" type="Transparent" press="onNavToHome"/>
+            <Button text="Products" type="Transparent" press="onNavToProducts" visible="{= ${globalModel>/user/role} !== 'admin'}"/>
+        </content>
+        <content>
+            <ToolbarSpacer />
+        </content>
+        <content>
+            <Button icon="sap-icon://cart" type="Transparent" press="onNavToCart">
+                    <!-- <Text text="{globalModel>/cartItemCount}" visible="{globalModel>/cartItemCount}" /> -->
+            </Button>
+
+
+          <Text text="{globalModel>/user/username}" visible="{globalModel>/isUserLoggedIn}" class="usernameText" />
+            <Button text="Logout" icon="sap-icon://log" type="Transparent" press="onLogout"/>
+        </content>
+    </Toolbar>
+</mvc:View>

@@ -1,0 +1,10 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+             <Toolbar design="Auto" class="footer">
+                <ToolbarSpacer />
+                <Text text="© 2024 SAP UI5 Application. All rights reserved." />
+                <ToolbarSpacer />
+            </Toolbar>
+ </mvc:View>

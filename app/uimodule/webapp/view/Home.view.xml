@@ -1,0 +1,65 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+    controllerName="uimodule.controller.Home">
+
+       
+            <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center" width="100%">
+                
+                <!-- Ana başlık -->
+                <Title text="Welcome to the SAP UI5 Application!" level="H1" titleStyle="H1" class="sapUiLargeMarginTopBottom"/>
+                
+                <!-- Açıklama metni -->
+                <Text text="Explore the features and functionality of our application using the cards below." class="sapUiMediumMarginBottom" textAlign="Center" width="80%"/>
+                
+                <!-- Bilgi kartları -->
+                <HBox justifyContent="Center" alignItems="Center" width="100%" class="sapUiMediumMarginBottom">
+                    <VBox class="sapUiTinyMargin" width="300px">
+                        <Panel headerText="Products" class="sapUiResponsiveMargin" height="300px">
+                            <VBox height="100%" justifyContent="SpaceBetween">
+                                <VBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+                                    <Image src="https://sapui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/Fiori_guidelines_image.png" width="100%" height="150px" />
+                                    <Text text="View and manage all your products from this section." class="sapUiSmallMarginTop" textAlign="Center"/>
+                                </VBox>
+								<HBox justifyContent="Center">
+                                <Button text="Go to Products" type="Emphasized" press="onNavToProducts"/>
+								</HBox>
+                            </VBox>
+                        </Panel>
+                    </VBox>
+                    <VBox class="sapUiTinyMargin" width="300px">
+                        <Panel headerText="Users" class="sapUiResponsiveMargin" height="300px">
+                            <VBox height="100%" justifyContent="SpaceBetween">
+                                <VBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+                                    <Image src="https://zahiraccounting.com/en-my/wp-content/uploads/2015/10/zahir-accounting-software-have-more-than-60.000-users.png" width="100%" height="150px" />
+                                    <Text text="Manage user accounts and permissions." class="sapUiSmallMarginTop" textAlign="Center"/>
+                                </VBox>
+								<HBox justifyContent="Center">
+                                <Button text="Go to Users" type="Emphasized" press="onNavToUsers"/>
+								</HBox>
+                            </VBox>
+                        </Panel>
+                    </VBox>
+                    <VBox class="sapUiTinyMargin" width="300px">
+                        <Panel headerText="Reports" class="sapUiResponsiveMargin" height="300px">
+                            <VBox height="100%" justifyContent="SpaceBetween">
+                                <VBox class="sapUiTinyMarginTopBottom" alignItems="Center">
+                                    <Image src="https://erlebe-software.de/files/2020/01/Fotolia_198918274_S-660x440.jpg.webp" width="100%" height="150px" />
+                                    <Text text="Generate and view reports and analytics." class="sapUiSmallMarginTop" textAlign="Center"/>
+                                </VBox>
+								<HBox justifyContent="Center">
+                                <Button text="Go to Reports" type="Emphasized" press="onNavToReports"/>
+								</HBox>
+                            </VBox>
+                        </Panel>
+                    </VBox>
+                </HBox>
+                
+            </VBox>
+ 
+
+  
+      
+  
+</mvc:View>

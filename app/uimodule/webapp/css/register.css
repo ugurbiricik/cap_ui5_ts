@@ -1,0 +1,66 @@
+/* Ana konteyner */
+.mainContainer {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVyJTIwMTkyMHgxMDgwfGVufDB8fDB8fHww') center/cover no-repeat;
+}
+
+/* Arka plan ve form merkezi */
+.backgroundContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Paneli */
+.formPanel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+}
+
+/* Form Başlığı */
+.formTitle {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input Margin */
+.inputMargin {
+    margin-bottom: 15px;
+}
+
+/* Kayıt Butonu */
+.signUpButton {
+    color: white;
+    border-radius: 5px;
+}
+.signInButton {
+    color: white;
+    border-radius: 5px;
+}
+
+/* Alt Metin ve Bağlantı */
+.footerText {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.footerLink {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #2F80ED;
+    text-decoration: none;
+}
+
+.footerLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

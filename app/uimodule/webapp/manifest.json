@@ -10,11 +10,6 @@
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
     "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:worklist",
-      "version": "1.15.1",
-      "toolsId": "45115a62-5b1b-4a4d-aa80-d2979c888025"
-    },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/product/",
@@ -43,13 +38,23 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "component": {
+      "name": "uimodule",
+      "settings": {
+        "id": "uimodule"
+      }
+    },
+    "rootView": {
+      "viewName": "uimodule.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
     "dependencies": {
       "minUI5Version": "1.129.2",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.ui.core": {}
       }
     },
     "contentDensities": {
@@ -80,63 +85,80 @@
     "resources": {
       "css": []
     },
-    "routing": {
-      "config": {},
+   "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "uimodule.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true,
+        "bypassed": {
+                "target": "Login"
+            }
+      },
       "routes": [
         {
-          "pattern": ":?query:",
-          "name": "ProductsList",
-          "target": "ProductsList"
+          "pattern": "",
+          "name": "Home",
+          "target": "Home"
         },
         {
-          "pattern": "Products({key}):?query:",
-          "name": "ProductsObjectPage",
-          "target": "ProductsObjectPage"
+          "pattern": "products",
+          "name": "Products",
+          "target": "Products"
+        },
+        {
+          "pattern": "add-products",
+          "name": "ProductsAdd",
+          "target": "ProductsAdd"
+        },
+        {
+          "pattern": "users",
+          "name": "Users",
+          "target": "Users"
+        },
+        {
+          "pattern": "cart",
+          "name": "Cart",
+          "target": "Cart"
+        },
+        {
+          "pattern": "login",
+          "name": "Login",
+          "target": "Login"
+        },
+        {
+          "pattern": "register",
+          "name": "Register",
+          "target": "Register"
         }
+      
       ],
       "targets": {
-        "ProductsList": {
-          "type": "Component",
-          "id": "ProductsList",
-          "name": "sap.fe.templates.ListReport",
-          "options": {
-            "settings": {
-              "contextPath": "/Products",
-              "variantManagement": "Page",
-              "hideFilterBar": true,
-              "navigation": {
-                "Products": {
-                  "detail": {
-                    "route": "ProductsObjectPage"
-                  }
-                }
-              },
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "ResponsiveTable"
-                  }
-                }
-              }
-            }
-          }
+        "Home": {
+          "viewName": "Home"
         },
-        "ProductsObjectPage": {
-          "type": "Component",
-          "id": "ProductsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Products"
-            }
-          }
+        "Products": {
+          "viewName": "products.Products"
+        },
+        "ProductsAdd": {
+          "viewName": "products.ProductsAdd"
+        },
+        "Users": {
+          "viewName": "Users"
+        },
+        "Cart": {
+          "viewName": "Cart"
+        },
+        "Login": {
+          "viewName": "Login"
+        },
+        "Register": {
+          "viewName": "Register"
         }
+
       }
     }
-  },
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "transactional"
   }
 }

@@ -1,0 +1,46 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true"
+  controllerName="uimodule.controller.Users">
+  
+  <Table id="usersTable"
+       items="{
+         path: '/Users',
+         templateShareable: false
+       }"
+       mode="SingleSelectMaster"
+       class="sapUiLargeMarginBeginEnd sapUiLargeMarginTopBottom">
+    <columns>
+      <Column>
+        <Text text="ID"/>
+      </Column>
+      <Column>
+        <Text text="Username"/>
+      </Column>
+      <Column>
+        <Text text="Email"/>
+      </Column>
+    
+      <Column hAlign="Center">
+        <Text text="Actions"/>
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Input value="{ID}" liveChange="onInputChange" /> <!-- Name düzenlenebilir alan -->
+          <Input value="{username}" liveChange="onInputChange"/> <!-- Price düzenlenebilir alan -->
+          <Input value="{email}" liveChange="onInputChange" /> <!-- Description düzenlenebilir alan -->
+          <HBox justifyContent="Center" width="100%">
+            <Button icon="sap-icon://delete"
+                    tooltip="Delete"
+                    type="Reject"
+                    press="onDeleteUser"/>
+          </HBox>
+        </cells>
+      </ColumnListItem>
+    </items>
+</Table>
+
+</mvc:View>

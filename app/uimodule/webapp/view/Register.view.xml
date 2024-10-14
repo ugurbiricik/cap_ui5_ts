@@ -1,0 +1,32 @@
+<mvc:View
+    controllerName="uimodule.controller.Register"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    
+    <VBox class="mainContainer" justifyContent="Center" alignItems="Center">
+        <!-- Arka Plan Resmi İçin Wrapper -->
+        <VBox class="backgroundContainer" justifyContent="Center" alignItems="Center">
+            <!-- Form Paneli -->
+            <Panel class="formPanel" width="400px">
+                <content>
+                    <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch">
+                        <Title level="H2" text="CREATE ACCOUNT" class="formTitle"/>
+                        <Input placeholder="Username" class="inputMargin" value="{registerModel>/newUser/username}" />
+                        <Input placeholder="Your Email" type="Email" class="inputMargin" value="{registerModel>/newUser/email}"/>
+                        <Input placeholder="Password" type="Password" class="inputMargin" value="{registerModel>/newUser/password}"/>
+                        <Input placeholder="Repeat your password" type="Password" class="inputMargin" value="{registerModel>/newUser/confirmPassword}"/>
+                        <CheckBox text="I agree all statements in Terms of service" class="inputMargin"/>
+
+                        <Button text="Sign Up" type="Emphasized" width="100%" class="signUpButton" press="onRegister"/>
+                        <Text text="Have already an account? " class="footerText"/>
+                        <Link text="Sign in here" press="onNavToLogin" class="footerLink"/>
+                    </VBox>
+                </content>
+            </Panel>
+        </VBox>
+    </VBox>
+</mvc:View>
+
+

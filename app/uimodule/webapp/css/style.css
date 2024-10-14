@@ -1,0 +1,99 @@
+/* style.css dosyanıza ekleyebilirsiniz */
+html, body, .sapUiBody, .sapMBody, .sapUiSizeCompact {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sapMPage {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.sapMApp {
+    height: 100%;
+    width: 100%;
+}
+
+.hBoxFullWidth {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.vBoxFullHeight {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.bgColor{
+    background-color: rgb(255, 255, 255);
+}
+
+.usernameText {
+    font-size: 16px;  /* Yazı boyutunu ayarlar */
+    font-weight: bold;  /* Kalın yazı */
+    color: #007AFF;  /* Mavi renk */
+    margin-right: 10px;  /* Sağ tarafa boşluk */
+}
+
+.adminPanelVBox{
+    background-color: #ffffff;
+    height: 100% !important ;
+
+}
+
+.hoverSideNav {
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+    height: 100% !important ;
+    border-radius: 0 !important;
+    padding-top: 30px;
+}
+
+.tntSideNavExpanded {
+    width: 200px !important; /* Expanded width */
+}
+
+.tntSideNavCollapsed {
+    width: 50px !important; /* Collapsed width */
+}
+
+.adminPanelVBox {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100% !important ;
+
+}
+
+.fullHeight {
+    height: 100% !important; /* HBox'ın tam yüksekliğe sahip olmasını sağlar */
+    width: 100%;  /* HBox'ın tam genişliğe sahip olmasını sağlar */
+}
+
+.parentSideNav{
+    height: 100vh !important;
+}
+
+.navbar{
+    border: none !important;
+    border: white;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+.footer{
+    border: none !important;
+    padding: 20px;
+
+}

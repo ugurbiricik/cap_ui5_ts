@@ -1,0 +1,18 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          displayBlock="true"
+          controllerName="uimodule.controller.App">
+          <HBox height="100%" fitContainer="true" class="fullHeight">
+
+          <VBox fitContainer="true" height="100%" class="adminPanelVBox" visible="{= ${globalModel>/user/role} === 'admin'}" >
+            <mvc:XMLView viewName="uimodule.view.AdminPanel" />
+          </VBox>
+          <VBox fitContainer="true" width="100%" >
+            <mvc:XMLView viewName="uimodule.view.Navigation" />
+            <App id="app" />
+            <mvc:XMLView viewName="uimodule.view.Footer" />
+        </VBox>
+          
+          </HBox>
+        
+</mvc:View>
