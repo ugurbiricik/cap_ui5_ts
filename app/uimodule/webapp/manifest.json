@@ -68,7 +68,7 @@
           "bundleName": "uimodule.i18n.i18n"
         }
       },
-      "": {
+      "mainServiceModel": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
@@ -83,7 +83,17 @@
       }
     },
     "resources": {
-      "css": []
+      "css": [
+        {
+          "uri": "css/style.css" 
+        },
+        {
+          "uri": "css/products.css" 
+        },
+        {
+          "uri": "css/register.css" 
+        }
+      ]
     },
    "routing": {
       "config": {

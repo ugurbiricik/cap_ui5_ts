@@ -3,6 +3,10 @@ import UIComponent from "sap/ui/core/UIComponent"; // UIComponent'i import ettik
 import MessageToast from "sap/m/MessageToast";
 import JSONModel from "sap/ui/model/json/JSONModel";
 
+
+
+
+
 export default class Navigation extends Controller {
     private _oPopover: any;
 
@@ -13,7 +17,14 @@ export default class Navigation extends Controller {
             this._oPopover.close();
             this._oPopover.setVisible(false);
         }
+
+       
     }
+
+  
+
+
+   
 
     public onNavToHome(): void {
         (this.getOwnerComponent() as UIComponent).getRouter().navTo("Home");

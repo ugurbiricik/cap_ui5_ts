@@ -24,6 +24,14 @@ export default class Component extends UIComponent {
     // Parent sınıfın init fonksiyonunu çağırın
     super.init();
 
+    const oAccessibilityModel = new JSONModel({
+      theme: "sap_fiori_3",
+      fontSize: "1rem",
+      contrastMode: false,
+      blueFilter: false
+  });
+  this.setModel(oAccessibilityModel, "accessibilityModel");
+
     // Device modelini yükle
     this.setModel(models.createDeviceModel(), "device");
 

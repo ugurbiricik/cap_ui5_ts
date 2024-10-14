@@ -12,7 +12,7 @@
             <ToolbarSpacer />
         </content>
         <content>
-            <Button text="Home" type="Transparent" press="onNavToHome"/>
+            <Button icon="sap-icon://home" text="Home" type="Transparent" press="onNavToHome"/>
             <Button text="Products" type="Transparent" press="onNavToProducts" visible="{= ${globalModel>/user/role} !== 'admin'}"/>
         </content>
         <content>

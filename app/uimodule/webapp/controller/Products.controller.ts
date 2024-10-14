@@ -242,7 +242,8 @@ export default class Products extends Controller {
 
         if (!this._pEditDialog) {
             this._pEditDialog = await Fragment.load({
-                name: "uimodule.view.fragments.EditProductDialog"
+                name: "uimodule.view.fragments.EditProductDialog",
+                controller:this
             });
             this.getView()?.addDependent(this._pEditDialog);
         }
@@ -258,6 +259,7 @@ export default class Products extends Controller {
     }
 
     public onSaveEditProduct(): void {
+        console.log("Save button clicked");
         const oEditModel = this.getView()?.getModel("editProductModel") as JSONModel;
         const oProductData = oEditModel.getProperty("/product");
 

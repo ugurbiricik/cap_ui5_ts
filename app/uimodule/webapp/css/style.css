@@ -97,3 +97,41 @@ html, body, .sapUiBody, .sapMBody, .sapUiSizeCompact {
     padding: 20px;
 
 }
+
+.blue-filter {
+    filter: sepia(50%) hue-rotate(190deg);
+}
+
+/* High Contrast Mode */
+.high-contrast {
+    filter: contrast(200%);
+}
+
+/* Night Mode */
+.night-mode {
+    background-color: #111;
+    color: #eee;
+}
+
+/* Adjust global font size */
+html {
+    font-size: 16px; /* Default size */
+    /* position: relative; */
+}
+
+.accessControl{
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    padding: 10px;
+    z-index: 999; 
+}
+
+.accessDialog{
+    position: fixed !important;
+    top: 50px !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    width: 300px; 
+    height: 500px;
+ }

@@ -3,17 +3,9 @@
     xmlns="sap.m"
     displayBlock="true"
     controllerName="uimodule.controller.Home">
-
-       
-            <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center" width="100%">
-                
-                <!-- Ana başlık -->
+        <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center" width="100%">
                 <Title text="Welcome to the SAP UI5 Application!" level="H1" titleStyle="H1" class="sapUiLargeMarginTopBottom"/>
-                
-                <!-- Açıklama metni -->
                 <Text text="Explore the features and functionality of our application using the cards below." class="sapUiMediumMarginBottom" textAlign="Center" width="80%"/>
-                
-                <!-- Bilgi kartları -->
                 <HBox justifyContent="Center" alignItems="Center" width="100%" class="sapUiMediumMarginBottom">
                     <VBox class="sapUiTinyMargin" width="300px">
                         <Panel headerText="Products" class="sapUiResponsiveMargin" height="300px">
@@ -55,11 +47,5 @@
                         </Panel>
                     </VBox>
                 </HBox>
-                
-            </VBox>
- 
-
-  
-      
-  
+        </VBox>
 </mvc:View>
