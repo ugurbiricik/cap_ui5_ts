@@ -6,10 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/hana": "^1",
     "@sap/cds": "^8",
-    "express": "^4",
     "@sap/xssec": "^4",
-    "@cap-js/hana": "^1"
+    "express": "^4",
+    "font-awesome-openui5": "^3.1.0"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.6",

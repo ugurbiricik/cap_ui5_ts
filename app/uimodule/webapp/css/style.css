@@ -7,6 +7,10 @@
 @import url('products.css');
 @import url('register.css');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html, body, .sapUiBody, .sapMBody, .sapUiSizeCompact {
     height: 100%;
     width: 100%;

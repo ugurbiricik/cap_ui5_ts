@@ -26,17 +26,21 @@ export default class App extends Controller {
         });
     }
 
-    public async onAccessVisible(): Promise<void> {
-      if (!this._AccessDialog) {
-          this._AccessDialog = await Fragment.load({
-              name: "uimodule.view.fragments.AccessDialog",
-              controller: this
-          });
-          this.getView()?.addDependent(this._AccessDialog);
-      }
-      this._AccessDialog.open();
+    public async onAccessVisible(oEvent: any): Promise<void> {
+        if (!this._AccessDialog) {
+            // Fragment'i yükle ve Popover'ı tanımla
+            this._AccessDialog = await Fragment.load({
+                name: "uimodule.view.fragments.AccessPopover",  // Popover tanımı olan Fragment
+                controller: this
+            });
+            this.getView()?.addDependent(this._AccessDialog);
+        }
+        // Popover'ı açmak için kaynağı belirtin (örn. ikon)
+        const oButton = oEvent.getSource(); 
+        this._AccessDialog.openBy(oButton);
     }
-    public onCloseAccessibilityDialog(): void {
+    
+    public onCloseAccessibilityPopover(): void {
         this._AccessDialog.close();
     }
     public onFontSizeChange(oEvent: any): void {

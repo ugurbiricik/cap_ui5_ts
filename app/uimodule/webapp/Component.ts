@@ -2,6 +2,8 @@ import UIComponent from "sap/ui/core/UIComponent";
 import models from "./model/models";
 import ODataModel from "sap/ui/model/odata/v4/ODataModel";
 import JSONModel from "sap/ui/model/json/JSONModel";
+import FontAwesomeOpenUI5 from "font-awesome-openui5"; 
+
 
 /**
  * @namespace uimodule

@@ -1,11 +1,5 @@
-<core:FragmentDefinition
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <Dialog
-        id="accessibilityDialog"
-        title="Accessibility Options"
-        class="sapUiResponsivePadding--header sapUiResponsivePadding--content accessDialog">
-        
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Popover id="accessibilityPopover" title="Accessibility Options" class="accessPopover" placement="Bottom">
         <VBox>
             <HBox alignItems="Center">
                 <Text text="Font Size:" />
@@ -28,10 +22,8 @@
                 <Switch state="{globalModel>/accessibility/textToSpeech}" change="onTextToSpeechChange" />
             </HBox>
         </VBox>
-        
         <endButton>
-            <Button text="Close" press="onCloseAccessibilityDialog" />
+            <Button text="Close" press="onCloseAccessibilityPopover" />
         </endButton>
-        
-    </Dialog>
+    </Popover>
 </core:FragmentDefinition>
