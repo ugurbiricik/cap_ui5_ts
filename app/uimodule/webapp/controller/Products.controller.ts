@@ -5,7 +5,6 @@ import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
 import Fragment from "sap/ui/core/Fragment";
 import MessageBox from "sap/m/MessageBox";
-// import formatter from "../model/formatter";
 import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
 import ODataModel from "sap/ui/model/odata/v4/ODataModel";
 import UIComponent from "sap/ui/core/UIComponent";
@@ -15,71 +14,52 @@ import Dialog from "sap/m/Dialog";
 import Text from "sap/m/Text";
 import Button from "sap/m/Button";
 
-
-
-
 export default class Products extends Controller {
     private oModel!: ODataModel;
     private oEventBus: any;
     private _pEditDialog: any;
     private _oProductContext: any;
 
-    // public formatter = formatter;
-
     public onInit(): void {
         const oCartModel = new JSONModel({
-            quantity: 0 // Initialize quantity as 0
         });
         this.getView()?.setModel(oCartModel, "cartModel");
-
-        // Ana OData modelini al ve View'e ata
         this.oModel = this.getOwnerComponent()?.getModel("mainServiceModel") as ODataModel;
         this.getView()?.setModel(this.oModel);
-
-        // Yeni ürün eklemek için kullanılan JSON modelini tanımla
         const oNewProductModel = new JSONModel({
             newProduct: {
                 name: "",
                 price: 0,
                 description: "",
-                image: "" // URL alanı
+                image: "" 
             }
         });
         this.getView()?.setModel(oNewProductModel, "newProductModel");
-
-        // View'ler arası olayları yönetmek için EventBus tanımla
         this.oEventBus = sap.ui.getCore().getEventBus();
     }
 
     public onAddProduct(): void {
         const oNewProductModel = this.getView()?.getModel("newProductModel") as JSONModel;
         const oNewProductData = oNewProductModel?.getProperty("/newProduct");
-
-        // Boş alanların olup olmadığını kontrol et
         if (!oNewProductData.name || !oNewProductData.price || !oNewProductData.description || !oNewProductData.image) {
             MessageToast.show("Please fill all product details and enter an image URL.");
             return;
         }
-
-        // Price ve Stock alanlarının geçerli olup olmadığını kontrol et
         if (isNaN(oNewProductData.price)) {
             MessageToast.show("Please enter valid numeric values for Price.");
             return;
         }
-
-        // OData modeline yeni ürün ekle
         const oListBinding = this.oModel?.bindList("/Products") as ODataListBinding;
 
         oListBinding.create(oNewProductData).created()?.then(() => {
             MessageToast.show("Product successfully added!");
             (this.getOwnerComponent() as UIComponent).getRouter().navTo("Products");
 
-            // Formu sıfırla
             oNewProductModel.setProperty("/newProduct", {
                 name: "",
                 price: 0,
                 description: "",
-                image: "" // URL alanını sıfırla
+                image: "" 
             });
             this._refreshProductList();
         }).catch((error: any) => {

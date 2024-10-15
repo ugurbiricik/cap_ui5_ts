@@ -7,31 +7,22 @@
         class="sapUiResponsivePadding--header sapUiResponsivePadding--content accessDialog">
         
         <VBox>
-            <!-- Font Size Adjustment -->
             <HBox alignItems="Center">
                 <Text text="Font Size:" />
                 <Slider min="1" max="5" value="{globalModel>/accessibility/fontSize}" liveChange="onFontSizeChange" />
             </HBox>
-            
-            <!-- Contrast Mode -->
             <HBox alignItems="Center">
                 <Text text="Contrast Mode:" />
                 <Switch state="{globalModel>/accessibility/contrastMode}" change="onContrastModeChange" />
             </HBox>
-
-            <!-- Blue Light Filter -->
             <HBox alignItems="Center">
                 <Text text="Blue Light Filter:" />
                 <Slider min="0" max="100" value="{globalModel>/accessibility/blueLight}" liveChange="onBlueLightChange" />
             </HBox>
-
-            <!-- Night Mode -->
             <HBox alignItems="Center">
                 <Text text="Night Mode:" />
                 <Switch state="{globalModel>/accessibility/nightMode}" change="onNightModeChange" />
             </HBox>
-
-            <!-- Other options -->
             <HBox alignItems="Center">
                 <Text text="Text to Speech:" />
                 <Switch state="{globalModel>/accessibility/textToSpeech}" change="onTextToSpeechChange" />

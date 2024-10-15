@@ -1,0 +1,21 @@
+.appHBoxContainer {
+    height: 100% !important; /* HBox'ın tam yüksekliğe sahip olmasını sağlar */
+    width: 100%;  /* HBox'ın tam genişliğe sahip olmasını sağlar */
+}
+
+.appAdminPanelVBox {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100% !important ;
+
+}
+
+.appAccessControl{
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    padding: 10px;
+    z-index: 999; 
+}

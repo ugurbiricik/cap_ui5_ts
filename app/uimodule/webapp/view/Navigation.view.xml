@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core"
     displayBlock="true"
     controllerName="uimodule.controller.Navigation">
-    <Toolbar id="navigationToolbar" visible="{globalModel>/isUserLoggedIn}" class="navbar">
+    <Toolbar id="navigationToolbar" visible="{globalModel>/isUserLoggedIn}" class="navbarContainer">
         <content>
    	    <core:Icon src="sap-icon://ai"/>
         </content>
@@ -24,7 +24,7 @@
             </Button>
 
 
-          <Text text="{globalModel>/user/username}" visible="{globalModel>/isUserLoggedIn}" class="usernameText" />
+          <Text text="{globalModel>/user/username}" visible="{globalModel>/isUserLoggedIn}" class="navbarUsernameText" />
             <Button text="Logout" icon="sap-icon://log" type="Transparent" press="onLogout"/>
         </content>
     </Toolbar>

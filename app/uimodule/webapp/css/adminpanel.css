@@ -1,0 +1,10 @@
+.adminPanelContainer{
+    height: 100vh !important;
+}
+
+.adminPanelToggle {
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+    height: 100% !important ;
+    border-radius: 0 !important;
+    padding-top: 30px;
+}

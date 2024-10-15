@@ -5,23 +5,23 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout">
     
-    <VBox class="mainContainer" justifyContent="Center" alignItems="Center">
-        <!-- Arka Plan Resmi İçin Wrapper -->
-        <VBox class="backgroundContainer" justifyContent="Center" alignItems="Center">
-            <!-- Form Paneli -->
-            <Panel class="formPanel" width="400px">
+    <VBox class="registerMainContainer" justifyContent="Center" alignItems="Center">
+
+        <VBox class="registerBackgroundContainer" justifyContent="Center" alignItems="Center">
+         
+            <Panel class="registerFormPanel" width="400px">
                 <content>
                     <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch">
-                        <Title level="H2" text="CREATE ACCOUNT" class="formTitle"/>
-                        <Input placeholder="Username" class="inputMargin" value="{registerModel>/newUser/username}" />
-                        <Input placeholder="Your Email" type="Email" class="inputMargin" value="{registerModel>/newUser/email}"/>
-                        <Input placeholder="Password" type="Password" class="inputMargin" value="{registerModel>/newUser/password}"/>
-                        <Input placeholder="Repeat your password" type="Password" class="inputMargin" value="{registerModel>/newUser/confirmPassword}"/>
-                        <CheckBox text="I agree all statements in Terms of service" class="inputMargin"/>
+                        <Title level="H2" text="CREATE ACCOUNT" class="registerFormTitle"/>
+                        <Input placeholder="Username" class="registerInputMargin" value="{registerModel>/newUser/username}" />
+                        <Input placeholder="Your Email" type="Email" class="registerInputMargin" value="{registerModel>/newUser/email}"/>
+                        <Input placeholder="Password" type="Password" class="registerInputMargin" value="{registerModel>/newUser/password}"/>
+                        <Input placeholder="Repeat your password" type="Password" class="registerInputMargin" value="{registerModel>/newUser/confirmPassword}"/>
+                        <CheckBox text="I agree all statements in Terms of service" class="registerInputMargin"/>
 
-                        <Button text="Sign Up" type="Emphasized" width="100%" class="signUpButton" press="onRegister"/>
-                        <Text text="Have already an account? " class="footerText"/>
-                        <Link text="Sign in here" press="onNavToLogin" class="footerLink"/>
+                        <Button text="Sign Up" type="Emphasized" width="100%" class="registerSignUpButton" press="onRegister"/>
+                        <Text text="Have already an account? " class="registerFooterText"/>
+                        <Link text="Sign in here" press="onNavToLogin" class="registerFooterLink"/>
                     </VBox>
                 </content>
             </Panel>

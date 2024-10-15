@@ -4,30 +4,30 @@
           displayBlock="true"
           controllerName="uimodule.controller.Products">
  
-         <VBox class="mainContainer" justifyContent="Center" alignItems="Center">
-        <!-- Form Paneli -->
-        <Panel class="formPanel" headerText="Add New Product" width="400px">
+         <VBox class="pAddContainer" justifyContent="Center" alignItems="Center">
+       
+        <Panel class="pAddFormPanel" headerText="Add New Product" width="400px">
             <content>
                 <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch">
 
-                    <!-- Ürün Adı -->
+                   
                     <Label text="Name"/>
-                    <Input id="nameInput" value="{newProductModel>/newProduct/name}" class="inputMargin"/>
+                    <Input id="nameInput" value="{newProductModel>/newProduct/name}" class="pAddInputMargin"/>
 
-                    <!-- Fiyat -->
+                 
                     <Label text="Price"/>
-                    <Input id="priceInput" value="{newProductModel>/newProduct/price}" type="Number" class="inputMargin"/>
+                    <Input id="priceInput" value="{newProductModel>/newProduct/price}" type="Number" class="pAddInputMargin"/>
 
-                    <!-- Açıklama -->
+                  
                     <Label text="Description"/>
-                    <Input id="descInput" value="{newProductModel>/newProduct/description}" class="inputMargin"/>
+                    <Input id="descInput" value="{newProductModel>/newProduct/description}" class="pAddInputMargin"/>
 
-                    <!-- Görsel URL Girişi -->
+                  
                     <Label text="Product Image URL"/>
-                    <Input id="imageURLInput" value="{newProductModel>/newProduct/image}" placeholder="Enter image URL..." class="inputMargin"/>
+                    <Input id="imageURLInput" value="{newProductModel>/newProduct/image}" placeholder="Enter image URL..." class="pAddInputMargin"/>
 
-                    <!-- Ürün Ekle Butonu -->
-                    <Button text="Add Product" type="Emphasized" press="onAddProduct" width="100%" class="addButton"/>
+                  
+                    <Button text="Add Product" type="Emphasized" press="onAddProduct" width="100%" class="pAddButton"/>
                 </VBox>
             </content>
         </Panel>

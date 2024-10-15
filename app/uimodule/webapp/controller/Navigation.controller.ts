@@ -1,17 +1,12 @@
 import Controller from "sap/ui/core/mvc/Controller";
-import UIComponent from "sap/ui/core/UIComponent"; // UIComponent'i import ettik
+import UIComponent from "sap/ui/core/UIComponent"; 
 import MessageToast from "sap/m/MessageToast";
 import JSONModel from "sap/ui/model/json/JSONModel";
-
-
-
-
 
 export default class Navigation extends Controller {
     private _oPopover: any;
 
     public onInit(): void {
-        // Popover oluşturma
         this._oPopover = this.byId("menuPopover");
         if (this._oPopover && this._oPopover.isOpen()) {
             this._oPopover.close();
@@ -20,12 +15,6 @@ export default class Navigation extends Controller {
 
        
     }
-
-  
-
-
-   
-
     public onNavToHome(): void {
         (this.getOwnerComponent() as UIComponent).getRouter().navTo("Home");
     }

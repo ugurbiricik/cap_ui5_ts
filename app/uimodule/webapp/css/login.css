@@ -1,10 +1,10 @@
-.registerMainContainer {
+.loginMainContainer {
     height: 100vh;
     width: 100vw;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVyJTIwMTkyMHgxMDgwfGVufDB8fDB8fHww') center/cover no-repeat;
 }
 
-.registerBackgroundContainer {
+.loginBackgroundContainer {
     height: 100%;
     width: 100%;
     display: flex;
@@ -12,46 +12,44 @@
     align-items: center;
 }
 
-.registerFormPanel {
+.loginFormPanel {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 30px 40px;
 }
 
-.registerFormTitle {
+.loginFormTitle {
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.registerInputMargin {
+.loginInputMargin {
     margin-bottom: 15px;
 }
 
+.loginSignInButton {
+    color: white;
+    border-radius: 5px;
+}
 
-.registerFooterText {
+.loginFooterText {
     text-align: center;
     margin-top: 20px;
     font-size: 0.875rem;
     color: #888;
 }
 
-.registerFooterLink {
+.loginFooterLink {
     text-align: center;
     font-size: 0.875rem;
     color: #2F80ED;
     text-decoration: none;
 }
 
-.registerFooterLink:hover {
+.loginFooterLink:hover {
     text-decoration: underline;
     cursor: pointer;
 }
-
-.registerSignUpButton {
-    color: white;
-    border-radius: 5px;
-}
-

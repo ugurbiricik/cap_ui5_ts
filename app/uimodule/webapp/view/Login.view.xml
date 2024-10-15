@@ -5,20 +5,20 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout">
     
-    <VBox class="mainContainer" justifyContent="Center" alignItems="Center">
-        <!-- Arka Plan Resmi İçin Wrapper -->
-        <VBox class="backgroundContainer" justifyContent="Center" alignItems="Center">
-            <!-- Form Paneli -->
-            <Panel class="formPanel" width="400px">
+    <VBox class="loginMainContainer" justifyContent="Center" alignItems="Center">
+     
+        <VBox class="loginBackgroundContainer" justifyContent="Center" alignItems="Center">
+          
+            <Panel class="loginFormPanel" width="400px">
                 <content>
                     <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch" >
-                        <Title level="H2" text="LOGIN" class="formTitle"/>
-                        <Input placeholder="Email" class="inputMargin"  value="{loginModel>/email}" id="loginEmail" />
-                        <Input placeholder="Password" type="Password" class="inputMargin" value="{loginModel>/password}"/>
-                        <CheckBox text="I agree all statements in Terms of service" class="inputMargin"/>
-                        <Button text="Sign In" type="Emphasized" width="100%" class="signInButton" press="onLogin"/>
-                        <Text text="Don't have an account? " class="footerText"/>
-                        <Link text="Sign up here" press="onNavToRegister" class="footerLink"/>
+                        <Title level="H2" text="LOGIN" class="loginFormTitle"/>
+                        <Input placeholder="Email" class="loginInputMargin"  value="{loginModel>/email}" id="loginEmail" />
+                        <Input placeholder="Password" type="Password" class="loginInputMargin" value="{loginModel>/password}"/>
+                        <CheckBox text="I agree all statements in Terms of service" class="loginInputMargin"/>
+                        <Button text="Sign In" type="Emphasized" width="100%" class="loginSignInButton" press="onLogin"/>
+                        <Text text="Don't have an account? " class="loginFooterText"/>
+                        <Link text="Sign up here" press="onNavToRegister" class="loginFooterLink"/>
                     </VBox>
                 </content>
             </Panel>

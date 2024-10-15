@@ -29,9 +29,9 @@
     <items>
       <ColumnListItem>
         <cells>
-          <Input value="{ID}" liveChange="onInputChange" /> <!-- Name düzenlenebilir alan -->
-          <Input value="{username}" liveChange="onInputChange"/> <!-- Price düzenlenebilir alan -->
-          <Input value="{email}" liveChange="onInputChange" /> <!-- Description düzenlenebilir alan -->
+          <Input value="{ID}" liveChange="onInputChange" /> 
+          <Input value="{username}" liveChange="onInputChange"/> 
+          <Input value="{email}" liveChange="onInputChange" /> 
           <HBox justifyContent="Center" width="100%">
             <Button icon="sap-icon://delete"
                     tooltip="Delete"

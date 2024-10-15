@@ -13,15 +13,10 @@ export default class Component extends UIComponent {
     interfaces: ["sap.ui.core.IAsyncContentCreation"],
     manifest: "json"
   };
-
-  // Constructor ekleniyor
   constructor() {
-    super();  // UIComponent'in constructor'ını çağırıyoruz
+    super(); 
   }
-
-  // init metodu, uygulama başlatılırken çalışır
   public init(): void {
-    // Parent sınıfın init fonksiyonunu çağırın
     super.init();
 
     const oAccessibilityModel = new JSONModel({
@@ -32,25 +27,20 @@ export default class Component extends UIComponent {
   });
   this.setModel(oAccessibilityModel, "accessibilityModel");
 
-    // Device modelini yükle
     this.setModel(models.createDeviceModel(), "device");
 
-    // Global Model
+   
     const oGlobalModel = new JSONModel({
       isUserLoggedIn: false,
       username: ""
     });
     this.setModel(oGlobalModel, "globalModel");
-
-    // cartModel (JSON Model) tanımlama - sepet bilgilerini geçici olarak saklar
     const oCartModel = new JSONModel({
-      cartID: null,    // Sepet ID'si
-      totalQuantity: 0, // Sepetteki toplam ürün adedi
-      totalAmount: 0    // Sepetteki toplam tutar
+      cartID: null, 
+      totalQuantity: 0, 
+      totalAmount: 0  
     });
-    this.setModel(oCartModel, "cartModel"); // Modeli view'de kullanmak için set et
-
-    // OData Model'in Tanımlanması ve Global Olarak Set Edilmesi
+    this.setModel(oCartModel, "cartModel");
     let oODataModel = this.getModel("mainServiceModel") as ODataModel;
     if (!oODataModel) {
       oODataModel = new ODataModel({
@@ -63,15 +53,9 @@ export default class Component extends UIComponent {
       });
       this.setModel(oODataModel, "mainServiceModel");
     }
-
-    // Local session ayarlarının başlatılması
     this._initLocalSession();
-
-    // Router'ın başlatılması
     this.getRouter().initialize();
   }
-
-  // Local session bilgilerini başlatır
   private _initLocalSession(): void {
     const oGlobalModel = this.getModel("globalModel") as JSONModel;
     const isUserLoggedIn = localStorage.getItem("isUserLoggedIn") === "true";
@@ -82,7 +66,7 @@ export default class Component extends UIComponent {
       oGlobalModel.setProperty("/isUserLoggedIn", true);
       oGlobalModel.setProperty("/user", oUserData);
     } else {
-      this.getRouter().navTo("Login", {}, true); // Kullanıcı giriş yapmadıysa login ekranına yönlendir
+      this.getRouter().navTo("Login", {}, true); 
     }
   }
 }

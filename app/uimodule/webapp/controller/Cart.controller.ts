@@ -1,25 +1,20 @@
 import Controller from "sap/ui/core/mvc/Controller";
-import UIComponent from "sap/ui/core/UIComponent"; // UIComponent'i import ettik
+import UIComponent from "sap/ui/core/UIComponent";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessageToast from "sap/m/MessageToast";
 import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
-import ODataModel from "sap/ui/model/odata/v4/ODataModel"; // ODataModel için import
+import ODataModel from "sap/ui/model/odata/v4/ODataModel"; 
 
 export default class Cart extends Controller {
-    private oModel!: ODataModel; // OData model tipini belirt
-    private oCartModel!: JSONModel; // Sepet modelini belirt
+    private oModel!: ODataModel; 
+    private oCartModel!: JSONModel; 
 
     public onInit(): void {
-        // Ana OData modelini al ve View'e ata
         this.oModel = (this.getOwnerComponent() as UIComponent).getModel("mainServiceModel") as ODataModel;
         this.getView()?.setModel(this.oModel);
-
-        // Sepet verilerini çekmek için OData servisini kullan
         this.loadCartData();
     }
-
-    // Sepet verilerini yükleme
     public loadCartData(): void {
         const oGlobalModel = (this.getOwnerComponent() as UIComponent).getModel("globalModel");
         
@@ -47,22 +42,13 @@ export default class Cart extends Controller {
             MessageToast.show("Sepet verileri yüklenemedi: " + oError.message);
         });
     }
-
-    // Sepeti güncelleme işlemi
     public onUpdateCart(): void {
-        // Sepeti güncelleme işlemleri burada yapılabilir
         MessageToast.show("Sepet güncellendi.");
     }
-
-    // Sepeti boşaltma işlemi
     public onClearCart(): void {
-        // Kullanıcının sepetini temizleme işlemleri burada yapılabilir
         MessageToast.show("Sepet boşaltıldı.");
     }
-
-    // Satın alma işlemi
     public onCheckout(): void {
         MessageToast.show("Satın alma işlemi başlatıldı.");
-        // Satın alma işlemleri burada yapılabilir (Ödeme işlemleri vb.)
     }
 }

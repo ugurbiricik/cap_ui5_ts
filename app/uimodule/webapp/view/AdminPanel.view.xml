@@ -4,8 +4,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:tnt="sap.tnt"
     height="100%">
-    <VBox renderType="Bare" alignItems="Center" height="100%" class="parentSideNav">
-        <tnt:SideNavigation id="sideNavigation" expanded="false" class="hoverSideNav" itemSelect=".onItemSelect">
+    <VBox renderType="Bare" alignItems="Center" height="100%" class="adminPanelContainer">
+        <tnt:SideNavigation id="sideNavigation" expanded="false" class="adminPanelToggle" itemSelect=".onItemSelect">
             <tnt:NavigationList >
                 <tnt:NavigationListItem text="Users" icon="sap-icon://person-placeholder" key="Users" />
                 <tnt:NavigationListItem text="Products" icon="sap-icon://product" key="Products" />

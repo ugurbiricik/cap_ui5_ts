@@ -1,151 +1,3 @@
-/* Kullanılan CSS Sınıfları */
-
-#productTable {
-  width: 80%;
-  margin: 20px auto; /* Tabloyu ortalar */
-  border-collapse: collapse;
-}
-
-#productTable th, #productTable td {
-  border: 1px solid #ddd; /* Hücre kenarlıkları */
-  padding: 8px; /* İç boşluk */
-  text-align: left; /* Metin hizalaması */
-}
-
-#productTable th {
-  background-color: #f2f2f2; /* Başlık arka plan rengi */
-  color: #333; /* Başlık metin rengi */
-}
-
-#addProductForm {
-  margin: 0 auto; /* Formu ortalar */
-  padding: 20px;
-  width: 300px; /* Form genişliği */
-  background-color: #f9f9f9; /* Arka plan rengi */
-  border: 1px solid #ddd; /* Kenarlık */
-  border-radius: 8px; /* Köşe yuvarlama */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
-}
-
-#addProductForm label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-#addProductForm input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#addProductForm button {
-  background-color: #4CAF50; /* Buton arka plan rengi */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#addProductForm button:hover {
-  background-color: #45a049; /* Hover durumu */
-}
-
-/* Ana konteyner */
-.mainContainer {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/your/background.jpg') center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Form Paneli */
-.formPanel {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px 30px;
-}
-
-/* Input Alanları için Margin */
-.inputMargin {
-  margin-bottom: 15px;
-}
-
-/* Buton Stili */
-.addButton {
-  color: white;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-/* Ürün Kartları Listesi */
-.productList .sapMLIB {
-  display: inline-block;
-  width: 300px; /* Kart genişliği */
-  margin: 10px; /* Kartlar arası boşluk */
-  vertical-align: top;
-}
-
-
-/* Ürün Kartları */
-.productCardItem {
-  width: 300px; /* Kart genişliği */
-  border: 1px solid #ddd; /* Kart kenarlığı */
-  border-radius: 10px; /* Yuvarlak kenarlar */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-  overflow: hidden; /* İçeriğin taşmasını önle */
-}
-
-/* Ürün Görselleri */
-.productImage {
-  border-radius: 20px 20px 0 0;
-  object-fit: cover;
-}
-
-/* Ürün Detayları */
-.productDetails {
-  padding: 15px; /* İçerik boşluğu */
-  text-align: center; /* Metni ortala */
-}
-
-/* Ürün Bilgileri */
-.productName {
-  font-size: 1.4rem; /* Ürün adı boyutu */
-  font-weight: bold; /* Kalın yazı */
-  margin-bottom: 10px; /* Alt boşluk */
-}
-
-.productPrice,
-.productDescription,
-.productStock {
-  margin-top: 5px; /* Üst boşluk */
-  font-size: 1.0rem; /* Standart yazı boyutu */
-}
-
-/* Aksiyon Butonları */
-.actionButtons {
-  border-top: 1px solid #ddd; /* Üst kenar çizgisi */
-  padding: 10px; /* İçerik boşluğu */
-  background-color: #ffffff; /* Hafif gri arka plan */
-}
-
-.actionButtons .sapMBtn {
-  margin: 0 5px; /* Butonlar arası boşluk */
-}
-
-.productCard{
-  background-color: #ffffff;
-  box-shadow: inset;
-  border-radius: 20px;
-}
-
 .productFlexBox{
   margin: auto;
   padding-bottom: 50px;
@@ -155,3 +7,62 @@
   padding: 10px; /* İçerik kenar boşluğu */
   scrollbar-width: none;
 }
+
+.productCard{
+  background-color: #ffffff;
+  box-shadow: inset;
+  border-radius: 20px;
+}
+
+.productImage {
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+}
+.productDetails {
+  padding: 15px; /* İçerik boşluğu */
+  text-align: center; /* Metni ortala */
+}
+.productName {
+  font-size: 1.4rem; /* Ürün adı boyutu */
+  font-weight: bold; /* Kalın yazı */
+  margin-bottom: 10px; /* Alt boşluk */
+}
+
+.productPrice,
+.productDescription {
+  margin-top: 5px; /* Üst boşluk */
+  font-size: 1.0rem; /* Standart yazı boyutu */
+}
+.actionButtons {
+  border-top: 1px solid #ddd; /* Üst kenar çizgisi */
+  padding: 10px; /* İçerik boşluğu */
+  background-color: #ffffff; /* Hafif gri arka plan */
+}
+
+
+/* PRODUCT ADD */
+
+
+.pAddContainer {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/your/background.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pAddFormPanel {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+}
+.pAddInputMargin {
+  margin-bottom: 15px;
+}
+.pAddButton {
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+

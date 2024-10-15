@@ -1,0 +1,13 @@
+.navbarUsernameText {
+    font-size: 16px;  /* Yazı boyutunu ayarlar */
+    font-weight: bold;  /* Kalın yazı */
+    color: #007AFF;  /* Mavi renk */
+    margin-right: 10px;  /* Sağ tarafa boşluk */
+}
+
+.navbarContainer{
+    border: none !important;
+    border: white;
+    padding: 20px;
+    font-size: 1.5rem;
+}

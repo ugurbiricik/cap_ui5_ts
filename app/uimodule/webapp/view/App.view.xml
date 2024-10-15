@@ -3,16 +3,15 @@
           xmlns:core="sap.ui.core"
           displayBlock="true"
           controllerName="uimodule.controller.App">
-          <HBox height="100%" fitContainer="true" class="fullHeight">
+          <HBox height="100%" fitContainer="true" class="appHBoxContainer">
 
-          <VBox fitContainer="true" height="100%" class="adminPanelVBox" visible="{= ${globalModel>/user/role} === 'admin'}" >
+          <VBox fitContainer="true" height="100%" class="appAdminPanelVBox" visible="{= ${globalModel>/user/role} === 'admin'}" >
             <mvc:XMLView viewName="uimodule.view.AdminPanel" />
           </VBox>
-          <VBox fitContainer="true" width="100%" class="appUpToDown" >
+          <VBox fitContainer="true" width="100%" class="" >
             <mvc:XMLView viewName="uimodule.view.Navigation" />
             <App id="app" />
-            <!-- <Button icon="sap-icon://accessibility" class="accessControl" type="Transparent" press="onAccessVisible"/> -->
-             <core:Icon src="sap-icon://accessibility" press="onAccessVisible" class="accessControl" size="3rem"/>
+             <core:Icon src="sap-icon://accessibility" press="onAccessVisible" class="appAccessControl" size="3rem"/>
             <mvc:XMLView viewName="uimodule.view.Footer" />
         </VBox>
           

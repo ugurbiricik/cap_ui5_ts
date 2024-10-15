@@ -52,7 +52,7 @@ export default class Login extends Controller {
                 localStorage.setItem("isUserLoggedIn", "true");
                 localStorage.setItem("userData", JSON.stringify(oUserData));
 
-                MessageToast.show("Login successful! Welcome, " + oUserData.name + "."); // oUserData'dan isim al
+                MessageToast.show("Login successful! Welcome, " + oUserData.name + "."); 
                 oLoginModel.setProperty("/email", "");
                 oLoginModel.setProperty("/password", "");
 

@@ -36,15 +36,10 @@ export default class App extends Controller {
       }
       this._AccessDialog.open();
     }
-
-    // Close Accessibility Dialog
     public onCloseAccessibilityDialog(): void {
         this._AccessDialog.close();
     }
-
-    // Handlers for Accessibility Features
     public onFontSizeChange(oEvent: any): void {
-        // Slider olayındaki value parametresini alıyoruz
         const newValue: number = oEvent.getParameter("value");
     
         const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
@@ -52,8 +47,6 @@ export default class App extends Controller {
         if (globalModel) {
             globalModel.setProperty("/accessibility/fontSize", newValue);
         }
-    
-        // Yazı boyutunu global olarak ayarlıyoruz
         document.documentElement.style.fontSize = `${newValue * 10}px`;
     }
     
@@ -61,28 +54,24 @@ export default class App extends Controller {
     public onContrastModeChange(oEvent: any): void {
         const isContrastEnabled = oEvent.getParameter("state");
     
-        // Modeli JSONModel olarak dönüştürüyoruz
         const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
     
         if (globalModel) {
             globalModel.setProperty("/accessibility/contrastMode", isContrastEnabled);
         }
     
-        document.body.classList.toggle("high-contrast", isContrastEnabled); // Kontrast modunu değiştir
+        document.body.classList.toggle("high-contrast", isContrastEnabled); 
     }
     
 
     public onBlueLightChange(oEvent: any): void {
         const newValue = oEvent.getParameter("value");
     
-        // Modeli JSONModel olarak dönüştürüyoruz
         const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
     
         if (globalModel) {
             globalModel.setProperty("/accessibility/blueLight", newValue);
         }
-    
-        // Mavi ışık filtresi için ayar yapıyoruz
         const blueLightIntensity = (100 - newValue) / 100;
         document.body.style.filter = `brightness(${blueLightIntensity})`;
     }
@@ -95,7 +84,7 @@ export default class App extends Controller {
         if (globalModel) {
             globalModel.setProperty("/accessibility/nightMode", isNightMode);
         }
-        document.body.classList.toggle("night-mode", isNightMode); // Toggle night mode
+        document.body.classList.toggle("night-mode", isNightMode); 
     }
 
     public onTextToSpeechChange(oEvent: any): void {
@@ -107,13 +96,11 @@ export default class App extends Controller {
             globalModel.setProperty("/accessibility/textToSpeech", isTextToSpeech);
         }
         if (isTextToSpeech) {
-            this.startTextToSpeech(); // Implement your text-to-speech functionality here
+            this.startTextToSpeech(); 
         }
     }
-
-    // Implement your text-to-speech functionality here
     public startTextToSpeech(): void {
-        const text = document.body.innerText; // Get the entire page's text
+        const text = document.body.innerText; 
         const utterance = new SpeechSynthesisUtterance(text);
         speechSynthesis.speak(utterance);
     }
