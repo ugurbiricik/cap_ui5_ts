@@ -1,67 +1,36 @@
-import Controller from "sap/ui/core/mvc/Controller";
+// ProductActions.controller.js
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessageToast from "sap/m/MessageToast";
-import Filter from "sap/ui/model/Filter";
-import FilterOperator from "sap/ui/model/FilterOperator";
-import Fragment from "sap/ui/core/Fragment";
 import MessageBox from "sap/m/MessageBox";
-import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
-import ODataModel from "sap/ui/model/odata/v4/ODataModel";
-import UIComponent from "sap/ui/core/UIComponent";
-import Event from "sap/ui/base/Event";
-import Control from "sap/ui/core/Control";
 import Dialog from "sap/m/Dialog";
 import Text from "sap/m/Text";
 import Button from "sap/m/Button";
+import Event from "sap/ui/base/Event";
+import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
+import ODataModel from "sap/ui/model/odata/v4/ODataModel";
+import Control from "sap/ui/core/Control";
+import Filter from "sap/ui/model/Filter";
+import FilterOperator from "sap/ui/model/FilterOperator";
+import Fragment from "sap/ui/core/Fragment";
 
-export default class Products extends Controller {
-    private oModel!: ODataModel;
-    private oEventBus: any;
+export class ProductActions {
+    getView: any;
+    constructor(private oModel: ODataModel, private view: any) {}
     private _pEditDialog: any;
-    private _oProductContext: any;
-
-    public onInit(): void {
-        const oCartModel = new JSONModel({
-        });
-        this.getView()?.setModel(oCartModel, "cartModel");
-        this.oModel = this.getOwnerComponent()?.getModel("mainServiceModel") as ODataModel;
-        this.getView()?.setModel(this.oModel);
-        const oNewProductModel = new JSONModel({
-            newProduct: {
-                name: "",
-                price: 0,
-                description: "",
-                image: "" 
-            }
-        });
-        this.getView()?.setModel(oNewProductModel, "newProductModel");
-        this.oEventBus = sap.ui.getCore().getEventBus();
-    }
 
     public onAddProduct(): void {
-        const oNewProductModel = this.getView()?.getModel("newProductModel") as JSONModel;
+        const oNewProductModel = this.view.getModel("newProductModel") as JSONModel;
         const oNewProductData = oNewProductModel?.getProperty("/newProduct");
-        if (!oNewProductData.name || !oNewProductData.price || !oNewProductData.description || !oNewProductData.image) {
-            MessageToast.show("Please fill all product details and enter an image URL.");
+        if (!oNewProductData.Name || !oNewProductData.Status || !oNewProductData.SupplierName || !oNewProductData.MainCategory) {
+            MessageToast.show("Please fill all product details.");
             return;
         }
-        if (isNaN(oNewProductData.price)) {
-            MessageToast.show("Please enter valid numeric values for Price.");
-            return;
-        }
-        const oListBinding = this.oModel?.bindList("/Products") as ODataListBinding;
+        const oListBinding = this.oModel.bindList("/Products") as ODataListBinding;
 
         oListBinding.create(oNewProductData).created()?.then(() => {
             MessageToast.show("Product successfully added!");
-            (this.getOwnerComponent() as UIComponent).getRouter().navTo("Products");
-
-            oNewProductModel.setProperty("/newProduct", {
-                name: "",
-                price: 0,
-                description: "",
-                image: "" 
-            });
-            this._refreshProductList();
+            // Navigate or refresh logic
+            oNewProductModel.setProperty("/newProduct", this.getEmptyProduct());
         }).catch((error: any) => {
             MessageToast.show("Failed to add product: " + error.message);
         });
@@ -69,8 +38,7 @@ export default class Products extends Controller {
 
     public onDeleteProductPress(oEvent: Event): void {
         const oContext = (oEvent.getSource() as Control).getBindingContext("mainServiceModel");
-
-        const sProductName = oContext?.getProperty("name");
+        const sProductName = oContext?.getProperty("Name");
 
         if (!oContext) {
             MessageToast.show("Please select the product you want to delete.");
@@ -79,11 +47,9 @@ export default class Products extends Controller {
 
         const oDialog = new Dialog({
             title: "Delete Confirmation",
-            type: "Message",
             content: new Text({ text: "Are you sure you want to delete this product? Product: " + sProductName }),
             beginButton: new Button({
                 text: "Yes",
-                type: "Emphasized",
                 press: () => {
                     (oContext as any).delete().then(() => {
                         MessageToast.show("Product successfully deleted: " + sProductName);
@@ -108,21 +74,12 @@ export default class Products extends Controller {
         oDialog.open();
     }
 
-    private _refreshProductList(): void {
-        const oList = this.byId("productList");
-        if (oList) {
-            const oBinding = oList.getBinding("items");
-            oBinding?.refresh();
-            this.oModel?.refresh();
-        }
-    }
-
     public onIncrease(oEvent: Event): void {
         const oButton = (oEvent.getSource() as Control);
         const oProductContext = oButton.getBindingContext("mainServiceModel");
         const sProductID = oProductContext?.getProperty("ID");
 
-        const oCartModel = this.getView()?.getModel("cartModel") as JSONModel;
+        const oCartModel = this.view.getModel("cartModel") as JSONModel;
         let aCartItems = oCartModel.getProperty("/cartItems") as any[];
 
         const oCartItem = aCartItems.find(item => item.productID === sProductID);
@@ -130,10 +87,7 @@ export default class Products extends Controller {
         if (oCartItem) {
             oCartItem.quantity += 1;
         } else {
-            aCartItems.push({
-                productID: sProductID,
-                quantity: 1
-            });
+            aCartItems.push({ productID: sProductID, quantity: 1 });
         }
 
         oCartModel.setProperty("/cartItems", aCartItems);
@@ -144,7 +98,7 @@ export default class Products extends Controller {
         const oProductContext = oButton.getBindingContext("mainServiceModel");
         const sProductID = oProductContext?.getProperty("ID");
 
-        const oCartModel = this.getView()?.getModel("cartModel") as JSONModel;
+        const oCartModel = this.view.getModel("cartModel") as JSONModel;
         let aCartItems = oCartModel.getProperty("/cartItems") as any[];
 
         const oCartItem = aCartItems.find(item => item.productID === sProductID);
@@ -163,13 +117,13 @@ export default class Products extends Controller {
     public addToCart(oEvent: Event): void {
         const oProductContext = (oEvent.getSource() as Control).getBindingContext("mainServiceModel");
         const sProductID = oProductContext?.getProperty("ID");
-        const sUserID = (this.getView()?.getModel("globalModel") as JSONModel).getProperty("/user/ID");
+        const sUserID = (this.view.getModel("globalModel") as JSONModel).getProperty("/user/ID");
         const fProductPrice = oProductContext?.getProperty("price");
 
-        const oCartModel = this.getView()?.getModel("cartModel") as JSONModel;
+        const oCartModel = this.view.getModel("cartModel") as JSONModel;
         const iQuantity = oCartModel.getProperty("/quantity");
 
-        const oCartListBinding = this.oModel?.bindList("/Cart") as ODataListBinding;
+        const oCartListBinding = this.oModel.bindList("/Cart") as ODataListBinding;
 
         oCartListBinding.filter(new Filter({
             filters: [
@@ -233,36 +187,24 @@ export default class Products extends Controller {
         });
         this.getView()?.setModel(oEditModel, "editProductModel");
 
-        this._oProductContext = oProductContext;
 
         this._pEditDialog.open();
     }
 
     public onSaveEditProduct(): void {
-        console.log("Save button clicked");
-        const oEditModel = this.getView()?.getModel("editProductModel") as JSONModel;
+        const oEditModel = this.view.getModel("editProductModel") as JSONModel;
         const oProductData = oEditModel.getProperty("/product");
-
-        const oModel = this.getView()?.getModel("mainServiceModel") as ODataModel;
-
         const sProductID = oProductData.ID;
 
-        const oBindList = oModel.bindList("/Products");
+        const oBindList = this.oModel.bindList("/Products");
         const aFilter = new Filter("ID", FilterOperator.EQ, sProductID);
 
         oBindList.filter(aFilter).requestContexts().then((aContexts: any[]) => {
             if (aContexts.length > 0) {
                 const oContext = aContexts[0];
-
-                oContext.setProperty("name", oProductData.name);
-                oContext.setProperty("price", oProductData.price);
-                oContext.setProperty("description", oProductData.description);
-                oContext.setProperty("image", oProductData.image);
-
-                oModel.refresh();
-
+                this.updateProductProperties(oContext, oProductData);
+                this.oModel.refresh();
                 MessageToast.show("Product updated successfully.");
-                this._pEditDialog.close();
             } else {
                 MessageToast.show("Product not found for update.");
             }
@@ -271,7 +213,42 @@ export default class Products extends Controller {
         });
     }
 
-    public onCancelEditProduct(): void {
-        this._pEditDialog?.close();
+    public onCancelEditProduct(oEditDialog: Dialog): void {
+        oEditDialog.close();
+    }
+
+    private updateProductProperties(oContext: any, oProductData: any): void {
+        oContext.setProperty("Name", oProductData.Name);
+        oContext.setProperty("Status", oProductData.Status);
+        oContext.setProperty("SupplierName", oProductData.SupplierName);
+        oContext.setProperty("MainCategory", oProductData.MainCategory);
+        oContext.setProperty("Category", oProductData.Category);
+        oContext.setProperty("Width", oProductData.Width);
+        oContext.setProperty("Height", oProductData.Height);
+        oContext.setProperty("WeightMeasure", oProductData.WeightMeasure);
+        oContext.setProperty("ProductPicUrl", oProductData.ProductPicUrl);
+    }
+
+    private getEmptyProduct() {
+        return {
+            Name: "",
+            Status: "",
+            SupplierName: "",
+            MainCategory: "",
+            Category: "",
+            Width: "",
+            Height: "",
+            WeightMeasure: "",
+            ProductPicUrl: ""
+        };
+    }
+
+    private _refreshProductList(): void {
+        const oList = this.view.byId("productList");
+        if (oList) {
+            const oBinding = oList.getBinding("items");
+            oBinding?.refresh();
+            this.oModel.refresh();
+        }
     }
 }

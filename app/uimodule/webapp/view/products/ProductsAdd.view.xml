@@ -2,35 +2,44 @@
           xmlns="sap.m"
           xmlns:html="http://www.w3.org/1999/xhtml"
           displayBlock="true"
-          controllerName="uimodule.controller.Products">
- 
-         <VBox class="pAddContainer" justifyContent="Center" alignItems="Center">
-       
+          controllerName="uimodule.controller.product.Products">
+
+    <VBox class="pAddContainer" justifyContent="Center" alignItems="Center">
         <Panel class="pAddFormPanel" headerText="Add New Product" width="400px">
             <content>
                 <VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Stretch">
 
-                   
                     <Label text="Name"/>
-                    <Input id="nameInput" value="{newProductModel>/newProduct/name}" class="pAddInputMargin"/>
+                    <Input id="nameInput" value="{newProductModel>/newProduct/Name}" class="pAddInputMargin"/>
 
-                 
-                    <Label text="Price"/>
-                    <Input id="priceInput" value="{newProductModel>/newProduct/price}" type="Number" class="pAddInputMargin"/>
+                    <Label text="Status"/>
+                    <Input id="statusInput" value="{newProductModel>/newProduct/Status}" class="pAddInputMargin"/>
 
-                  
-                    <Label text="Description"/>
-                    <Input id="descInput" value="{newProductModel>/newProduct/description}" class="pAddInputMargin"/>
+                    <Label text="Supplier Name"/>
+                    <Input id="supplierNameInput" value="{newProductModel>/newProduct/SupplierName}" class="pAddInputMargin"/>
 
-                  
+                    <Label text="Main Category"/>
+                    <Input id="mainCategoryInput" value="{newProductModel>/newProduct/MainCategory}" class="pAddInputMargin"/>
+
+                    <Label text="Category"/>
+                    <Input id="categoryInput" value="{newProductModel>/newProduct/Category}" class="pAddInputMargin"/>
+
+                    <Label text="Width (cm)"/>
+                    <Input id="widthInput" value="{newProductModel>/newProduct/Width}" type="Number" class="pAddInputMargin"/>
+
+                    <Label text="Height (cm)"/>
+                    <Input id="heightInput" value="{newProductModel>/newProduct/Height}" type="Number" class="pAddInputMargin"/>
+
+                    <Label text="Weight (kg)"/>
+                    <Input id="weightInput" value="{newProductModel>/newProduct/WeightMeasure}" type="Number" class="pAddInputMargin"/>
+
                     <Label text="Product Image URL"/>
-                    <Input id="imageURLInput" value="{newProductModel>/newProduct/image}" placeholder="Enter image URL..." class="pAddInputMargin"/>
+                    <Input id="imageURLInput" value="{newProductModel>/newProduct/ProductPicUrl}" placeholder="Enter image URL..." class="pAddInputMargin"/>
 
-                  
                     <Button text="Add Product" type="Emphasized" press="onAddProduct" width="100%" class="pAddButton"/>
                 </VBox>
             </content>
         </Panel>
     </VBox>
-  
+
 </mvc:View>

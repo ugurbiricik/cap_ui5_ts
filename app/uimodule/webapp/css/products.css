@@ -39,6 +39,13 @@
   background-color: #ffffff; /* Hafif gri arka plan */
 }
 
+.customImageStyle img {
+  width: 150px;   /* İstediğiniz genişlik */
+  height: 150px;  /* İstediğiniz yükseklik */
+  object-fit: cover; /* Resmin orantılı olarak kırpılması */
+}
+
+
 
 /* PRODUCT ADD */
 

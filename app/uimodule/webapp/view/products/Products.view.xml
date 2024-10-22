@@ -1,57 +1,119 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m"
+		  xmlns:core="sap.ui.core"
           xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:f="sap.f"
+          xmlns:cards="sap.f.cards"
+          xmlns:l="sap.ui.layout"
+          xmlns:lf="sap.ui.layout.form"
+          height="100%"
           displayBlock="true"
-          controllerName="uimodule.controller.Products">
+          controllerName="uimodule.controller.product.Products">
+	<Page titleLevel="H4" title="PRODUCTS PAGE" titleAlignment="Center" class="sapUiResponsiveContentPadding">
+	    
+         <Toolbar>
+            <Title text="Product List"/>
+            <ToolbarSpacer/>
+			<Select id="categorySelect" change=".onCategoryChange">
+				<items>
+					<core:Item key="All" text="All Categories"/>
+					<core:Item key="Toys" text="Toys"/>
+					<core:Item key="Furniture" text="Furniture"/>
+					<core:Item key="Clothing" text="Clothing"/>
+				</items>
+  			 </Select>
+            <SearchField 
+               width="50%" 
+               search=".onFilterProducts"/>
+         </Toolbar>
+      
 
-    <FlexBox id="productFlexBox"
-             direction="Row"
-             wrap="Wrap"
-             justifyContent="Center"
-             items="{mainServiceModel>/Products}"
-             width="80%"
-             height="100%"
-             class="productFlexBox">
-        <items>
-            <VBox class="productCard sapUiMediumMargin" alignItems="Center" width="250px" height="400px"  >
+	<lf:SimpleForm
+			labelSpanL="6"
+			labelSpanM="6"
+			editable="true"
+			layout="ResponsiveGridLayout">
+		</lf:SimpleForm>
+		<Title id="carouselTitle"
+			   class="sapUiMediumMarginTop"
+			   text="{= ${productCountModel>/productCount} + ' Matching Results'}"></Title>
+		<Carousel
+			id="carouselSample"
+			ariaLabelledBy="carouselTitle"
+			height="auto"
+			pages="{
+				path: 'mainServiceModel>/Products'
+			}">
+			<customLayout>
+				<CarouselLayout visiblePagesCount="{settings>/pagesCount}"/>
+			</customLayout>
+			<ScrollContainer
+				vertical="false"
+				horizontal="false"
+				class="sapUiResponsiveContentPadding sapUiContentPadding">
 
-                <Image src="{mainServiceModel>image}" alt="{mainServiceModel>name}" class="productImage" width="100%" height="250px"/>
-                
-                
-                <VBox class="productDetails" alignItems="Center" justifyContent="Center">
-                    <Text text="{mainServiceModel>name}" class="productName" wrapping="true"/>
-                    <Text text="{mainServiceModel>price} €" class="productPrice"/>
-                    <Text text="{mainServiceModel>description}" class="productDescription" wrapping="true"/>
-                </VBox>
-                
-           
-                <HBox class="actionButtons" justifyContent="SpaceBetween" width="100%" visible="{= ${globalModel>/user/role} === 'admin'}">
-                    <Button icon="sap-icon://edit"
-                            tooltip="Edit"
-                            type="Accept"
-                            press="onEditProductPress" />
-                    <Button icon="sap-icon://delete"
-                            tooltip="Delete"
-                            type="Reject"
-                            press="onDeleteProductPress"/>
-                </HBox>
-                <HBox class="actionButtons" justifyContent="SpaceBetween" width="100%" visible="{= ${globalModel>/user/role} === 'client'}">
-                <HBox alignItems="Center">
-                    <Button icon="sap-icon://less"
-                            type="Accept"
-                            press="onDecrease" />
-                    <Text text="0" id="quantityText"/>
-                    <Button icon="sap-icon://add"
-                            type="Accept"
-                            press="onIncrease" />
-                </HBox>
-                    <Button icon="sap-icon://cart-4"
-                            tooltip="Delete"
-                            type="Reject"
-                            press="addToCart"/>
-                </HBox>
-            </VBox>
-        </items>
-    </FlexBox>
+				<f:Card>
+					<f:header>
+						<cards:Header
+							title="{mainServiceModel>Name}"
+							subtitle="{mainServiceModel>Status}"
+							iconSrc="{mainServiceModel>ProductPicUrl}"
+							iconDisplayShape="Square" 
+							iconSize="XL"/>
+					</f:header>
+					<f:content>
+						<l:VerticalLayout class="sapUiContentPadding" width="100%">
+							<l:BlockLayout>
+								<l:BlockLayoutRow>
+									<l:BlockLayoutCell title="Main Information" width="1">
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Supplier:" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>SupplierName}" />
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Main Category:" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>MainCategory}" />
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Category:" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>Category}" />
+										</HBox>
+									</l:BlockLayoutCell>
+
+									<l:BlockLayoutCell title="Specifications" width="1">
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Width (cm)" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>Width}" />
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Height (cm)" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>Height}" />
+										</HBox>
+										<HBox class="sapUiTinyMarginBottom">
+											<Label text="Weight (kg)" />
+										</HBox>
+										<HBox class="sapUiSmallMarginBottom">
+											<Text text="{mainServiceModel>WeightMeasure}" />
+										</HBox>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+					</f:content>
+				</f:Card>
+			</ScrollContainer>
+		</Carousel>
+	</Page>
+
  
 </mvc:View>

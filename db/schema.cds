@@ -1,11 +1,16 @@
 namespace sap.ui5_app;
 
 entity Products {
-  key ID : UUID;
-  name  : String(100);
-  price : Decimal(10, 2);
-  description : String(255);
-  image : String(5000);
+    key ID            : UUID;
+    Name              : String(100);      
+    Status            : String(50);       
+    SupplierName      : String(100);    
+    MainCategory      : String(100);      
+    Category          : String(100);     
+    Width             : Decimal(5, 2);    
+    Height            : Decimal(5, 2);   
+    WeightMeasure     : Decimal(5, 2);   
+    ProductPicUrl     : String(5000); 
 }
 
 

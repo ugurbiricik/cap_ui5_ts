@@ -10,10 +10,10 @@
     color: #eee;
 }
 .accessPopover{
-    position: fixed !important;
+    /* position: fixed !important;
     top: 50px !important;
     right: 0 !important;
-    z-index: 1000 !important;
+    z-index: 1000 !important; */
     width: 300px !important; 
     height: 500px !important;
  }
