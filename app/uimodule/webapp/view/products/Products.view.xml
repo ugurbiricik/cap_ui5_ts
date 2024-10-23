@@ -6,15 +6,13 @@
           xmlns:cards="sap.f.cards"
           xmlns:l="sap.ui.layout"
           xmlns:lf="sap.ui.layout.form"
-          height="100%"
-          displayBlock="true"
           controllerName="uimodule.controller.product.Products">
-	<Page titleLevel="H4" title="PRODUCTS PAGE" titleAlignment="Center" class="sapUiResponsiveContentPadding">
+	<Page titleLevel="H4" title="PRODUCTS PAGE" showHeader="false" titleAlignment="Center" class="sapUiResponsiveContentPadding">
 	    
          <Toolbar>
             <Title text="Product List"/>
             <ToolbarSpacer/>
-			<Select id="categorySelect" change=".onCategoryChange">
+			<Select id="categorySelect" change=".onCategoryChange" class="categoryDropdown">
 				<items>
 					<core:Item key="All" text="All Categories"/>
 					<core:Item key="Toys" text="Toys"/>

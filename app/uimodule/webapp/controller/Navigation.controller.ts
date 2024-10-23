@@ -53,6 +53,6 @@ export default class Navigation extends Controller {
         localStorage.removeItem("userData");
 
         MessageToast.show("You have been logged out.");
-        (this.getOwnerComponent() as UIComponent).getRouter().navTo("Login");
+        (this.getOwnerComponent() as UIComponent).getRouter().navTo("Home");
     }
 }

@@ -17,14 +17,12 @@ export default class Login extends Controller {
         };
         const oModel = new JSONModel(oData);
         this.getView()?.setModel(oModel, "loginModel");
-
         this.oDataModel = (this.getOwnerComponent() as UIComponent).getModel("mainServiceModel") as ODataModel;
     }
 
     public onLogin(): void {
         const oLoginModel = this.getView()?.getModel("loginModel") as JSONModel;
         const oLoginData = oLoginModel.getData();
-        console.log(oLoginData, "Login Data");
         const sEmail = oLoginData.email ? oLoginData.email.trim() : "";
         const sPassword = oLoginData.password ? oLoginData.password.trim() : "";
 

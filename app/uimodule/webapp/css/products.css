@@ -45,6 +45,12 @@
   object-fit: cover; /* Resmin orantılı olarak kırpılması */
 }
 
+.categoryDropdown .sapMSelectList {
+  max-height: auto; /* Ensures it doesn't have a predefined height */
+  overflow-y: auto; /* Ensures the content is scrollable if it exceeds the viewable area */
+}
+
+
 
 
 /* PRODUCT ADD */
@@ -53,7 +59,7 @@
 .pAddContainer {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/your/background.jpg') center/cover no-repeat;
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/your/background.jpg') center/cover no-repeat; */
   display: flex;
   justify-content: center;
   align-items: center;

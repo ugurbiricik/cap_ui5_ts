@@ -1,25 +1,24 @@
-import Controller from "sap/ui/core/mvc/Controller";
-import UIComponent from "sap/ui/core/UIComponent";
-import Panel from "sap/m/Panel";
-import Dialog, { Dialog$AfterOpenEvent } from "sap/m/Dialog";
-import Button from "sap/m/Button";
-import Select from "sap/m/Select";
+import BaseController from "../BaseController";
 import Fragment from "sap/ui/core/Fragment";
 import JSONModel from "sap/ui/model/json/JSONModel";
 
-  
-export default class App extends Controller {
+export default class AppAccessibility extends BaseController {
 
     private _AccessDialog: any;
+    private globalModel: JSONModel;
 
-    public onInit(): void {
+    constructor(globalModel: JSONModel) {
+        super("AppAccessibility"); // BaseController'a sName parametresini geçiyoruz
+        this.globalModel = globalModel;
+    }
+    
 
-        const globalModel = (this.getOwnerComponent() as UIComponent).getModel("globalModel") as JSONModel;
-        globalModel.setData({
+    public onInitialFunc(): void {
+        this.globalModel.setData({
             accessibility: {
-                fontSize: 3, // Default font size
+                fontSize: 3, // Varsayılan yazı tipi boyutu
                 contrastMode: false,
-                blueLight: 30, // Blue light intensity
+                blueLight: 30, // Mavi ışık yoğunluğu
                 nightMode: false,
                 textToSpeech: false,
             }
@@ -35,43 +34,38 @@ export default class App extends Controller {
             });
             this.getView()?.addDependent(this._AccessDialog);
         }
-        // Popover'ı açmak için kaynağı belirtin (örn. ikon)
         const oButton = oEvent.getSource(); 
         this._AccessDialog.openBy(oButton);
     }
-    
+
     public onCloseAccessibilityPopover(): void {
         this._AccessDialog.close();
     }
+
     public onFontSizeChange(oEvent: any): void {
         const newValue: number = oEvent.getParameter("value");
-    
-        const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
+        const globalModel = this.getModel("globalModel") as JSONModel;
     
         if (globalModel) {
             globalModel.setProperty("/accessibility/fontSize", newValue);
         }
         document.documentElement.style.fontSize = `${newValue * 10}px`;
     }
-    
 
     public onContrastModeChange(oEvent: any): void {
         const isContrastEnabled = oEvent.getParameter("state");
-    
         const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
-    
+
         if (globalModel) {
             globalModel.setProperty("/accessibility/contrastMode", isContrastEnabled);
         }
-    
+
         document.body.classList.toggle("high-contrast", isContrastEnabled); 
     }
-    
 
     public onBlueLightChange(oEvent: any): void {
         const newValue = oEvent.getParameter("value");
-    
-        const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
+        const globalModel = this.getModel("globalModel") as JSONModel;
     
         if (globalModel) {
             globalModel.setProperty("/accessibility/blueLight", newValue);
@@ -82,8 +76,7 @@ export default class App extends Controller {
 
     public onNightModeChange(oEvent: any): void {
         const isNightMode = oEvent.getParameter("state");
-
-        const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
+        const globalModel = this.getModel("globalModel") as JSONModel;
     
         if (globalModel) {
             globalModel.setProperty("/accessibility/nightMode", isNightMode);
@@ -93,21 +86,20 @@ export default class App extends Controller {
 
     public onTextToSpeechChange(oEvent: any): void {
         const isTextToSpeech = oEvent.getParameter("state");
+        const globalModel = this.getModel("globalModel") as JSONModel;
 
-        const globalModel = this.getView()?.getModel("globalModel") as JSONModel;
-    
         if (globalModel) {
             globalModel.setProperty("/accessibility/textToSpeech", isTextToSpeech);
         }
+
         if (isTextToSpeech) {
             this.startTextToSpeech(); 
         }
     }
+
     public startTextToSpeech(): void {
         const text = document.body.innerText; 
         const utterance = new SpeechSynthesisUtterance(text);
         speechSynthesis.speak(utterance);
     }
-  }
-
-  
+}
