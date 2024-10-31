@@ -224,6 +224,16 @@
 					"target": "statistics"
 				},
 				{
+					"pattern": "StatisticsMicro",
+					"name": "statisticsMicro",
+					"target": "statisticsMicro"
+				},
+				{
+					"pattern": "StatisticsD3",
+					"name": "statisticsD3",
+					"target": "statisticsD3"
+				},
+				{
 					"pattern": "UsageStatistics",
 					"name": "usageStatistics",
 					"target": "usageStatistics"
@@ -249,7 +259,7 @@
           "target": "Products"
         },
         {
-          "pattern": "add-products",
+          "pattern": "add-product",
           "name": "ProductsAdd",
           "target": "ProductsAdd"
         },
@@ -301,6 +311,14 @@
 				"statistics": {
 					"viewId": "statistics",
 					"viewName": "Statistics"
+				},
+				"statisticsMicro": {
+					"viewId": "statisticsMicro",
+					"viewName": "StatisticsMicro" 
+				},
+				  "statisticsD3": {
+					"viewId": "statisticsD3",
+					"viewName": "StatisticsD3"  
 				},
 				"usageStatistics": {
 					"viewId": "usageStatistics",

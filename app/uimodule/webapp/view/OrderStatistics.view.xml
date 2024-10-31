@@ -1,0 +1,10 @@
+<mvc:View
+	controllerName="uimodule.controller.Statistics"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page showHeader="false">
+		<content>
+			<Text text="Order Statistics"/>
+		</content>
+	</Page>
+</mvc:View>

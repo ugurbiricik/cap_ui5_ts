@@ -3,9 +3,9 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:base="sap.ui.base"
-	xmlns:tool="sap.ui.demo.toolpageapp.control">
+	xmlns:tool="uimodule.control">
 	<l:BlockLayout
-		id="statisticsBlockLayout"
+		id="statisticsD3BlockLayout"
 		busy="false"
 		background="Dashboard">
 		<l:BlockLayoutRow

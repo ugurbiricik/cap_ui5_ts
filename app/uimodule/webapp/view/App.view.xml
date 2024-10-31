@@ -35,11 +35,22 @@
 					</layoutData>
 				</Button>
 				<Button
+					id="accessButton"
+					icon="sap-icon://accessibility"
+					visible="{= ${alerts>/alerts/errors}.length === 0 ? false : true }"
+					type="Transparent"
+					press=".onAccessVisible"
+					tooltip="{i18n>accessibilityButtonTooltip}">
+					<layoutData>
+						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
+					</layoutData>
+				</Button>
+				<Button
 					id="notificationButton"
 					icon="sap-icon://ui-notifications"
 					visible="{= ${alerts>/alerts/notifications}.length === 0 ? false : true }"
 					type="Transparent"
-					press=".onNotificationPress"
+					press=".onNotificationVisible"
 					tooltip="{i18n>notificationButtonTooltip}">
 					<layoutData>
 						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
@@ -54,7 +65,11 @@
 						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
 					</layoutData>
 				</Button>
-			</tnt:ToolHeader>
+				<Button
+					text="Show Popover"
+					press="onUserAuthPopover"
+					ariaHasPopup="Dialog" />
+		</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation
@@ -66,7 +81,7 @@
 						templateShareable: false
 					}">
 					<tnt:NavigationListItem
-						text="{path: 'side>titleI18nKey', formatter: '.getBundleText'}"
+						text="{path: 'side>titleI18nKey'}"
 						icon="{side>icon}"
 						expanded="{side>expanded}"
 						items="{
@@ -76,7 +91,7 @@
 						key="{side>key}"
 						href="#/{side>key}">
 						<tnt:NavigationListItem
-							text="{path: 'side>titleI18nKey', formatter: '.getBundleText'}"
+							text="{path: 'side>titleI18nKey'}"
 							key="{side>key}"
 							href="#/{side>key}">
 						</tnt:NavigationListItem>
@@ -89,7 +104,7 @@
 							templateShareable: false
 						}">
 						<tnt:NavigationListItem
-							text="{path: 'side>titleI18nKey', formatter: '.getBundleText'}"
+							text="{path: 'side>titleI18nKey'}"
 							icon="{side>icon}"
 							key="{side>key}"
 							href="#/{side>key}">
@@ -99,7 +114,7 @@
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
-			<App id="mainContents"/>
+			<App id="mainContents" height="100%"/>
 		</tnt:mainContents>
 	</tnt:ToolPage>
 </mvc:View>

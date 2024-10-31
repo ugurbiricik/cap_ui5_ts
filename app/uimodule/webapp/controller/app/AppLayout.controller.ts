@@ -72,7 +72,16 @@ export default class AppLayout extends BaseController {
 
     public onSideNavButtonPress(): void {
         console.log("tiklandi");
-        const oToolPage = this.getView()?.byId("app") as any;  // this.byId yerine getView()?.byId kullan
+
+        this.getView()?.attachAfterRendering(() => {
+            const oToolPage = this.getView()?.byId("app");
+            console.log("ToolPage: ", oToolPage);
+        });
+        
+        console.log("View: ", this.getView());  // Görünümün doğru gelip gelmediğini kontrol edin
+        const oToolPage = this.getView()?.byId("app") as any;
+        console.log("ToolPage: ", oToolPage);  // ToolPage'in alınıp alınmadığını kontrol edin
+
         if (oToolPage) {
             const bSideExpanded = oToolPage.getSideExpanded();
             this._setToggleButtonTooltip(bSideExpanded);

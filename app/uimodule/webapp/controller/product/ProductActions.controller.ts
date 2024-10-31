@@ -12,10 +12,16 @@ import Control from "sap/ui/core/Control";
 import Filter from "sap/ui/model/Filter";
 import FilterOperator from "sap/ui/model/FilterOperator";
 import Fragment from "sap/ui/core/Fragment";
+import Carousel from "sap/m/Carousel";
+import Controller from "sap/ui/core/mvc/Controller";
 
-export class ProductActions {
+export class ProductActions extends Controller {
     getView: any;
-    constructor(private oModel: ODataModel, private view: any) {}
+    aSelectedContexts : any;
+
+    constructor(private oModel: ODataModel, private view: any) {
+        super("uimodule.controller.product.ProductActions")
+    }
     private _pEditDialog: any;
 
     public onAddProduct(): void {
@@ -35,6 +41,53 @@ export class ProductActions {
             MessageToast.show("Failed to add product: " + error.message);
         });
     }
+
+    public onDeleteSelectedProducts(): void {
+        const oModel = this.getView().getModel("mainServiceModel") as ODataModel;
+        const aSelectedProducts = this.getSelectedProductContexts();
+    
+        if (aSelectedProducts.length === 0) {
+            MessageToast.show("Silmek için en az bir ürün seçin.");
+            return;
+        }
+    
+        MessageBox.confirm("Seçili ürünleri silmek istediğinize emin misiniz?", {
+            actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+            onClose: (sAction : any) => {
+                if (sAction === MessageBox.Action.OK) {
+                    aSelectedProducts.forEach((oContext) => {
+                        oContext.delete().then(() => {
+                            MessageToast.show("Ürün başarıyla silindi.");
+                        }).catch((oError: any) => {
+                            MessageBox.error("Ürün silinemedi: " + oError.message);
+                        });
+                    });
+    
+                    this._refreshProductList();
+                }
+            }
+        });
+    }
+    
+    // Seçili ürünlerin context'lerini almak için yardımcı fonksiyon
+    private getSelectedProductContexts(): any[] {
+        const oModel = this.getView().getModel("mainServiceModel") as ODataModel;
+    
+        const oBinding = this.getView().byId("productList").getBinding("items") as ODataListBinding;
+    
+        // Tüm ürünlerin bağlamlarını alıyoruz
+        oBinding.requestContexts().then((aContexts: any[]) => {
+            aContexts.forEach((oContext: any) => {
+                const oProductData = oContext.getObject();
+                if (oProductData.isSelected) {  // Seçili ürünleri filtrele
+                    this.aSelectedContexts.push(oContext);
+                }
+            });
+        });
+    
+        return this.aSelectedContexts;
+    }
+    
 
     public onDeleteProductPress(oEvent: Event): void {
         const oContext = (oEvent.getSource() as Control).getBindingContext("mainServiceModel");

@@ -3,31 +3,52 @@
 
 	"navigation": [
 		{
-			"titleI18nKey": "sideContentHome",
+			"titleI18nKey": "Home",
 			"icon": "sap-icon://home",
 			"expanded": true,
 			"key": "",
 			"items": []
 		},
 		{
-			"titleI18nKey": "sideContentSettings",
+			"titleI18nKey": "Users",
+			"icon": "sap-icon://person-placeholder",
+			"expanded": true,
+			"key": "users",
+			"items": []
+		},
+		{
+			"titleI18nKey": "Products",
+			"icon": "sap-icon://product",
+			"expanded": true,
+			"key": "products",
+			"items": []
+		},
+		{
+			"titleI18nKey": "Add Product",
+			"icon": "sap-icon://add-product",
+			"expanded": true,
+			"key": "add-product",
+			"items": []
+		},
+		{
+			"titleI18nKey": "Settings",
 			"icon": "sap-icon://settings",
 			"expanded": false,
 			"key": "masterSettings",
 			"items": []
 		},
 		{
-			"titleI18nKey": "sideContentStatistics",
+			"titleI18nKey": "Statistics",
 			"icon": "sap-icon://line-chart",
 			"expanded": true,
 			"key": "statistics",
 			"items": [
 				{
-					"titleI18nKey": "sideContentUsageStatistics",
+					"titleI18nKey": "UsageStatistics",
 					"key": "usageStatistics"
 				},
 				{
-					"titleI18nKey": "sideContentOrderStatistics",
+					"titleI18nKey": "OrderStatistics",
 					"key": "orderStatistics"
 				}
 			]
@@ -35,39 +56,39 @@
 	],
 	"fixedNavigation": [
 		{
-			"titleI18nKey": "sideContentImportantLinks",
+			"titleI18nKey": "ImportantLinks",
 			"icon": "sap-icon://chain-link",
 			"key": "importantLinks"
 		},
 		{
-			"titleI18nKey": "sideContentLegal",
+			"titleI18nKey": "Legal",
 			"icon": "sap-icon://compare",
 			"key": "legal"
 		}
 	],
 	"masterSettings": [
 		{
-			"titleI18nKey": "sideContentSystemSettings",
+			"titleI18nKey": "SystemSettings",
 			"key": "systemSettings",
 			"selected": true
 		},
 		{
-			"titleI18nKey": "sideContentOrderSettings",
+			"titleI18nKey": "OrderSettings",
 			"key": "orderSettings",
 			"selected": false
 		},
 		{
-			"titleI18nKey": "sideContentSupplierSettings",
+			"titleI18nKey": "SupplierSettings",
 			"key": "supplierSettings",
 			"selected": false
 		},
 		{
-			"titleI18nKey": "sideContentCampaignSettings",
+			"titleI18nKey": "CampaignSettings",
 			"key": "campaignSettings",
 			"selected": false
 		},
 		{
-			"titleI18nKey": "sideContentShippingSettings",
+			"titleI18nKey": "ShippingSettings",
 			"key": "shippingSettings",
 			"selected": false
 		}

@@ -4,7 +4,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:mc="sap.suite.ui.microchart">
 	<l:BlockLayout
-		id="statisticsBlockLayout"
+		id="statisticsMicroBlockLayout"
 		busy="false"
 		background="Dashboard">
 		<l:BlockLayoutRow

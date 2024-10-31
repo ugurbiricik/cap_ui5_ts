@@ -50,6 +50,12 @@
   overflow-y: auto; /* Ensures the content is scrollable if it exceeds the viewable area */
 }
 
+.customTable .sapMList {
+  max-height: 500px; /* Yüksekliği 500px ile sınırlandırdık */
+  overflow-y: auto; /* Dikey kaydırma çubuğunu etkinleştir */
+}
+
+
 
 
 
