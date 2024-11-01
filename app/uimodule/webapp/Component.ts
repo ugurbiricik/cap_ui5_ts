@@ -4,6 +4,7 @@ import ODataModel from "sap/ui/model/odata/v4/ODataModel";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Device from "sap/ui/Device"; 
 import History from "sap/ui/core/routing/History"; 
+import Storage from "sap/ui/util/Storage";
 
 
 /**
@@ -12,6 +13,7 @@ import History from "sap/ui/core/routing/History";
 
 export default class Component extends UIComponent {
   private _sContentDensityClass!: string;
+  private _storage: Storage;
 
   public static metadata = {
     interfaces: ["sap.ui.core.IAsyncContentCreation"],
@@ -25,6 +27,9 @@ export default class Component extends UIComponent {
   public init(): void {
     super.init();
 
+    this._storage = new Storage(Storage.Type.local);
+    
+
     // Accessibility Model
     const oAccessibilityModel = new JSONModel({
       theme: "sap_fiori_3",
@@ -34,25 +39,33 @@ export default class Component extends UIComponent {
     });
     this.setModel(oAccessibilityModel, "accessibilityModel");
 
-    // Device Model
     this.setModel(models.createDeviceModel(), "device");
 
-    // Global Model
-    const oGlobalModel = new JSONModel({
-      isUserLoggedIn: false,
-      username: ""
-    });
+    const isUserLoggedIn = this._storage.get("isUserLoggedIn") === "true";
+    const userData = this._storage.get("userData");
+    let initialData;
+
+    if (isUserLoggedIn && userData) {
+        // `localStorage`daki veriler varsa, onları kullanarak modeli başlat
+        initialData = {
+            isUserLoggedIn: true,
+            user: JSON.parse(userData)
+        };
+        console.log("GlobalModel initialized with localStorage data.");
+    } else {
+        // Eğer `localStorage`da veri yoksa boş bir model başlat
+        initialData = {
+            isUserLoggedIn: false,
+            user: {}
+        };
+        console.log("GlobalModel initialized as empty.");
+    }
+
+    const oGlobalModel = new JSONModel(initialData);
     this.setModel(oGlobalModel, "globalModel");
+    this._initLocalSession();
 
-    // Cart Model
-    const oCartModel = new JSONModel({
-      cartID: null,
-      totalQuantity: 0,
-      totalAmount: 0
-    });
-    this.setModel(oCartModel, "cartModel");
 
-    // OData Model (mainServiceModel)
     let oODataModel = this.getModel("mainServiceModel") as ODataModel;
     if (!oODataModel) {
       oODataModel = new ODataModel({
@@ -66,30 +79,35 @@ export default class Component extends UIComponent {
       this.setModel(oODataModel, "mainServiceModel");
     }
 
-    // Local session initialization
-    this._initLocalSession();
-    
-    // Router initialization
     this.getRouter().initialize();
   }
 
-  // Local session initialization
   private _initLocalSession(): void {
     const oGlobalModel = this.getModel("globalModel") as JSONModel;
-    const isUserLoggedIn = localStorage.getItem("isUserLoggedIn") === "true";
-    const userData = localStorage.getItem("userData");
+     // isUserLoggedIn ve userData değerlerini storage'dan alın
+     const isUserLoggedIn = this._storage.get("isUserLoggedIn") === "true";
+     const userData = this._storage.get("userData");
 
-    if (isUserLoggedIn) {
-      const oUserData = JSON.parse(userData || "{}");
-      oGlobalModel.setProperty("/isUserLoggedIn", true);
-      oGlobalModel.setProperty("/user", oUserData);
+    if (isUserLoggedIn && userData) {
+        const oUserData = JSON.parse(userData);
+        oGlobalModel.setProperty("/isUserLoggedIn", true);
+        oGlobalModel.setProperty("/user", oUserData);
+
+        oGlobalModel.refresh(true);
+        oGlobalModel.updateBindings(true);
+        console.log("User data loaded from localStorage:", oUserData);
     } else {
-      // this.getRouter().navTo("Login", {}, true);
-      console.log("user logged out")
+        // Oturum verisi yoksa boş model ayarla ve login sayfasına yönlendir
+        oGlobalModel.setProperty("/isUserLoggedIn", false);
+        oGlobalModel.setProperty("/user", {});
+        this.getRouter().navTo("Login", {}, true);
     }
-  }
 
-  // Content Density Class fonksiyonu (Cihaz tipi kontrolü)
+    // Model bağlantılarını güncelle
+    oGlobalModel.updateBindings(true);
+}
+
+
   public getContentDensityClass(): string {
     if (!this._sContentDensityClass) {
       // Dokunmatik cihazlar için cozy, diğerleri için compact
@@ -102,7 +120,6 @@ export default class Component extends UIComponent {
     return this._sContentDensityClass;
   }
 
-  // Geri navigasyon fonksiyonu
   public myNavBack(): void {
     const oHistory = History.getInstance();
     const oPrevHash = oHistory.getPreviousHash();
@@ -110,7 +127,7 @@ export default class Component extends UIComponent {
     if (oPrevHash !== undefined) {
       window.history.go(-1);
     } else {
-      this.getRouter().navTo("masterSettings", {}, true);  // Eğer geri gidilecek bir yer yoksa masterSettings'e git
+      this.getRouter().navTo("masterSettings", {}, true); 
     }
   }
 }

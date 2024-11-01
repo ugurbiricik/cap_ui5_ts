@@ -51,13 +51,7 @@
       "desktop": true,
       "tablet": true,
       "phone": true
-    },
-    "supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal",
-			"sap_fiori_3",
-			"sap_horizon"
-		]
+    }
   },
   "sap.ui5": {
     "component": {
@@ -158,10 +152,6 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/sideContent.json"
 			},
-			"alerts": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/alerts.json"
-			},
 			"customer": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/customers.json"
@@ -203,57 +193,32 @@
           "target": "Home"
         },
         {
-					"pattern": "MasterSettings",
-					"name": "masterSettings",
-					"target": [
-						"detailSettings",
-						"masterSettings"
-					]
-				},
-				{
-					"pattern": "MasterSettings/SystemSettings",
-					"name": "systemSettings",
-					"target": [
-						"detailSettings",
-						"masterSettings"
-					]
-				},
-				{
-					"pattern": "Statistics",
-					"name": "statistics",
-					"target": "statistics"
-				},
-				{
-					"pattern": "StatisticsMicro",
-					"name": "statisticsMicro",
-					"target": "statisticsMicro"
-				},
-				{
-					"pattern": "StatisticsD3",
-					"name": "statisticsD3",
-					"target": "statisticsD3"
-				},
-				{
-					"pattern": "UsageStatistics",
-					"name": "usageStatistics",
-					"target": "usageStatistics"
-				},
-				{
-					"pattern": "OrderStatistics",
-					"name": "orderStatistics",
-					"target": "orderStatistics"
-				},
-				{
-					"pattern": "ImportantLinks",
-					"name": "importantLinks",
-					"target": "importantLinks"
-				},
-				{
-					"pattern": "Legal",
-					"name": "legal",
-					"target": "legal"
-				},
-        {
+		  "pattern": "MasterSettings",
+		  "name": "masterSettings",
+		  "target": [
+				"detailSettings",
+				"masterSettings"
+		 	]
+		},
+		{
+			"pattern": "MasterSettings/SystemSettings",
+			"name": "systemSettings",
+			"target": [
+				"detailSettings",
+				"masterSettings"
+			]
+		},
+		{
+			"pattern": "ImportantLinks",
+			"name": "importantLinks",
+			"target": "importantLinks"
+		},
+		{
+			"pattern": "Legal",
+			"name": "legal",
+			"target": "legal"
+		},
+		{
           "pattern": "products",
           "name": "Products",
           "target": "Products"
@@ -307,26 +272,6 @@
 					"controlId": "appSettings",
 					"controlAggregation": "detailPages",
 					"parent": "appSettings"
-				},
-				"statistics": {
-					"viewId": "statistics",
-					"viewName": "Statistics"
-				},
-				"statisticsMicro": {
-					"viewId": "statisticsMicro",
-					"viewName": "StatisticsMicro" 
-				},
-				  "statisticsD3": {
-					"viewId": "statisticsD3",
-					"viewName": "StatisticsD3"  
-				},
-				"usageStatistics": {
-					"viewId": "usageStatistics",
-					"viewName": "UsageStatistics"
-				},
-				"orderStatistics": {
-					"viewId": "orderStatistics",
-					"viewName": "OrderStatistics"
 				},
 				"importantLinks": {
 					"viewId": "importantLinks",

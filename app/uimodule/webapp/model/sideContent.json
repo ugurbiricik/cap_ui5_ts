@@ -36,22 +36,6 @@
 			"expanded": false,
 			"key": "masterSettings",
 			"items": []
-		},
-		{
-			"titleI18nKey": "Statistics",
-			"icon": "sap-icon://line-chart",
-			"expanded": true,
-			"key": "statistics",
-			"items": [
-				{
-					"titleI18nKey": "UsageStatistics",
-					"key": "usageStatistics"
-				},
-				{
-					"titleI18nKey": "OrderStatistics",
-					"key": "orderStatistics"
-				}
-			]
 		}
 	],
 	"fixedNavigation": [

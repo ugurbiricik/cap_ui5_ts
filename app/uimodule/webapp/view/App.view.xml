@@ -2,6 +2,7 @@
 	controllerName="uimodule.controller.app.App"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
 	<tnt:ToolPage
 		id="app"
@@ -24,20 +25,8 @@
 					level="H2"/>
 				<ToolbarSpacer/>
 				<Button
-					id="errorButton"
-					icon="sap-icon://message-popup"
-					visible="{= ${alerts>/alerts/errors}.length === 0 ? false : true }"
-					type="Transparent"
-					press=".onMessagePopoverPress"
-					tooltip="{i18n>errorButtonTooltip}">
-					<layoutData>
-						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
-					</layoutData>
-				</Button>
-				<Button
 					id="accessButton"
 					icon="sap-icon://accessibility"
-					visible="{= ${alerts>/alerts/errors}.length === 0 ? false : true }"
 					type="Transparent"
 					press=".onAccessVisible"
 					tooltip="{i18n>accessibilityButtonTooltip}">
@@ -46,29 +35,17 @@
 					</layoutData>
 				</Button>
 				<Button
-					id="notificationButton"
-					icon="sap-icon://ui-notifications"
-					visible="{= ${alerts>/alerts/notifications}.length === 0 ? false : true }"
-					type="Transparent"
-					press=".onNotificationVisible"
-					tooltip="{i18n>notificationButtonTooltip}">
+					icon="sap-icon://person-placeholder"
+					tooltip="User"
+					iconFirst="false"
+					text="{globalModel>/user/username}"
+					class="sapUiSmallMargin"
+					press=".onUserAuthPopover"
+					ariaHasPopup="Menu" >
 					<layoutData>
 						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
 					</layoutData>
 				</Button>
-				<Button
-					id="userButton"
-					text="{i18n>userName}"
-					type="Transparent"
-					press=".onUserNamePress">
-					<layoutData>
-						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
-					</layoutData>
-				</Button>
-				<Button
-					text="Show Popover"
-					press="onUserAuthPopover"
-					ariaHasPopup="Dialog" />
 		</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
@@ -114,7 +91,7 @@
 			</tnt:SideNavigation>
 		</tnt:sideContent>
 		<tnt:mainContents>
-			<App id="mainContents" height="100%"/>
+			<App id="mainContents"/>
 		</tnt:mainContents>
 	</tnt:ToolPage>
 </mvc:View>

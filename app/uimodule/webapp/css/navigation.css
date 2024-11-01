@@ -11,3 +11,17 @@
     padding: 20px;
     font-size: 1.5rem;
 }
+
+.userAuthPopover{
+    max-width: 100px !important;
+    max-height: 120px !important;
+}
+
+.userAuthChildButton .sapMBtnInner{
+    outline: none !important;
+    border: none !important;
+}
+
+.userAuthPopoverVBox{
+    padding: 5px;
+}

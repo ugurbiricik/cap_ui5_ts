@@ -3,20 +3,24 @@
 	xmlns:core="sap.ui.core">
 	<Popover
 		id="userAuthPopover"
-		title="{Name}"
-		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer userAuthPopover"
 		placement="Bottom"
-		initialFocus="email"
+		showHeader="false"
         >
-		<footer>
-			<OverflowToolbar>
-				<ToolbarSpacer/>
-				<Button
-					id="email"
-					text="Email"
-					press="handleEmailPress" />
-			</OverflowToolbar>
-		</footer>
-		<Image src="{ProductPicUrl}" densityAware="false" />
+		<VBox  class="userAuthPopoverVBox">
+			<Button
+				class="userAuthChildButton"
+				text="Login"
+				press=".onNavToLogin" />
+			<Button
+				class="userAuthChildButton"
+				text="Register"
+				press=".onNavToRegister" />
+			<Button
+				class="userAuthChildButton"
+				text="Logout"
+				press=".onLogout" />
+		</VBox>
+		
 	</Popover>
 </core:FragmentDefinition>

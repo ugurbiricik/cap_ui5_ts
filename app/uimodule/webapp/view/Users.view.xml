@@ -13,9 +13,6 @@
        class="sapUiLargeMarginBeginEnd sapUiLargeMarginTopBottom">
     <columns>
       <Column>
-        <Text text="ID"/>
-      </Column>
-      <Column>
         <Text text="Username"/>
       </Column>
       <Column>
@@ -29,7 +26,6 @@
     <items>
       <ColumnListItem>
         <cells>
-          <Input value="{ID}" liveChange="onInputChange" /> 
           <Input value="{username}" liveChange="onInputChange"/> 
           <Input value="{email}" liveChange="onInputChange" /> 
           <HBox justifyContent="Center" width="100%">
